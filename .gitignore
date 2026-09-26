@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+wheels/
+*.egg
+
+# Virtual environments (uv)
+.venv/
+venv/
+.python-version
+
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Node (tools/golden)
+node_modules/
+
+# Probe output: raw captures must never be committed
+captures/
+*.har
+
+# Secrets and local working files: never committed
+.env
+.env.*
+*.pem
+*.key
+research/
+.playwright-mcp/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

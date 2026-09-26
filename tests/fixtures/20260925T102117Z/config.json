@@ -1,0 +1,30 @@
+{
+  "TIMEZONE": "Europe/Rome",
+  "WIFI_ON": "1",
+  "VERSION": "3.16.3",
+  "APP_VERSION": "3.16.3",
+  "RASPBERRY_IP": "auto",
+  "RASPBERRY_SUBNET": "auto",
+  "RASPBERRY_GATEWAY": "auto",
+  "RASPBERRY_ETH0_IP": "192.0.2.71",
+  "RASPBERRY_WLAN1_IP": "",
+  "INSTALLATION_ID": "020000317a5a",
+  "BOARD": "pi",
+  "PLATFORM": "arm32",
+  "PLATFORM_SUFFIX": "",
+  "REMOTE_HOLD": "0",
+  "LAST_INFO_VERSION": "3.16.3",
+  "__DEUM_HELP": [
+    "6_2.png",
+    "6_6.png",
+    "0_4.png",
+    "0_1 .png",
+    "6_3.png",
+    "6_8.png",
+    "6_7.png",
+    "0_1.png",
+    "6_4.png",
+    "6_1.png"
+  ],
+  "LOCAL_TIME": "2026-09-25T12:21:23"
+}

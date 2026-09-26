@@ -1,0 +1,15 @@
+{
+  "name": "aiorehom-golden",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Dev-only generator of golden vectors: runs the vendor web-UI JS (read from $REHOM_WEBUI_SRC, never copied) and writes tests/golden/*.json",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "generate": "node generate.mjs"
+  },
+  "dependencies": {
+    "esbuild": "0.28.2",
+    "lodash": "4.18.1"
+  }
+}

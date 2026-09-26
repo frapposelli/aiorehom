@@ -1,0 +1,565 @@
+{"t":"2026-09-25T10:22:06.806Z","mono":0.0,"event":{"event":"connect","url_path":"/ws/"}}
+{"t":"2026-09-25T10:22:08.026Z","mono":1.22,"frame":{"domain":"termo","type":"update","value":"24.2","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:22:08.138Z","mono":1.333,"frame":{"domain":"termo","type":"update","value":"49","gruppo":"ZONA","path":"ZONA.003..UMIDITA"}}
+{"t":"2026-09-25T10:22:11.181Z","mono":4.376,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:22:11.185Z","mono":4.38,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:22:19.143Z","mono":12.338,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:22:35.652Z","mono":28.846,"frame":{"domain":"termo","type":"update","value":"24.8","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:22:41.225Z","mono":34.42,"frame":{"domain":"termo","type":"update","value":"63.9","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:22:41.230Z","mono":34.424,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:22:41.470Z","mono":34.664,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.9 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:22:50.490Z","mono":43.685,"frame":{"domain":"termo","type":"update","value":"24.7","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:04.718Z","mono":57.912,"frame":{"domain":"termo","type":"update","value":"24.8","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:06.197Z","mono":59.392,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:23:06.199Z","mono":59.394,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:23:06.507Z","mono":59.701,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:23:11.282Z","mono":64.477,"frame":{"domain":"termo","type":"update","value":"65.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:23:11.286Z","mono":64.481,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:23:11.522Z","mono":64.717,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 65.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:23:12.442Z","mono":65.636,"frame":{"domain":"termo","type":"update","value":"24.4","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:19.130Z","mono":72.325,"frame":{"domain":"termo","type":"update","value":"24.7","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:23.912Z","mono":77.107,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:29.060Z","mono":82.254,"frame":{"domain":"termo","type":"update","value":"24.2","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:30.144Z","mono":83.339,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:23:38.893Z","mono":92.088,"frame":{"domain":"termo","type":"update","value":"24.8","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:38.950Z","mono":92.145,"frame":{"domain":"termo","type":"update","value":"25","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:38.954Z","mono":92.149,"frame":{"domain":"termo","type":"update","value":"50","gruppo":"ZONA","path":"ZONA.003..UMIDITA"}}
+{"t":"2026-09-25T10:23:41.332Z","mono":94.526,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:23:41.336Z","mono":94.531,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:23:41.578Z","mono":94.772,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:23:52.636Z","mono":105.831,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:52.641Z","mono":105.836,"frame":{"domain":"termo","type":"update","value":"50","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:23:53.196Z","mono":106.391,"frame":{"domain":"termo","type":"update","value":"24.9","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:23:57.626Z","mono":110.82,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:24:06.252Z","mono":119.447,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:24:06.254Z","mono":119.448,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:24:06.616Z","mono":119.811,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:24:07.273Z","mono":120.468,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:24:11.381Z","mono":124.576,"frame":{"domain":"termo","type":"update","value":"65.0","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:24:11.384Z","mono":124.579,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:24:11.627Z","mono":124.821,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 65.0 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:24:17.121Z","mono":130.315,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:24:21.631Z","mono":134.826,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:24:21.641Z","mono":134.836,"frame":{"domain":"termo","type":"update","value":"49","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:24:34.606Z","mono":147.8,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"ZONA","path":"ZONA.002..ATTIVA"}}
+{"t":"2026-09-25T10:24:36.701Z","mono":149.895,"frame":{"domain":"termo","type":"update","value":"24.8","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:24:41.438Z","mono":154.633,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:24:41.443Z","mono":154.638,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:24:41.680Z","mono":154.874,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:24:50.643Z","mono":163.838,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:24:51.194Z","mono":164.389,"frame":{"domain":"termo","type":"update","value":"24.9","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:24:55.182Z","mono":168.377,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:25:06.103Z","mono":179.298,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:25:06.105Z","mono":179.299,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:25:06.721Z","mono":179.916,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:25:09.687Z","mono":182.882,"frame":{"domain":"termo","type":"update","value":"25.4","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:25:11.483Z","mono":184.678,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:25:11.487Z","mono":184.682,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:25:11.738Z","mono":184.933,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:25:17.024Z","mono":190.219,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:25:20.077Z","mono":193.272,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:25:30.985Z","mono":204.179,"frame":{"domain":"termo","type":"update","value":"24.4","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:25:38.686Z","mono":211.881,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:25:41.542Z","mono":214.737,"frame":{"domain":"termo","type":"update","value":"63.9","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:25:41.544Z","mono":214.739,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:25:41.794Z","mono":214.989,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.9 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:26:03.159Z","mono":236.354,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:26:04.144Z","mono":237.339,"frame":{"domain":"termo","type":"update","value":"51","gruppo":"ZONA","path":"ZONA.003..UMIDITA"}}
+{"t":"2026-09-25T10:26:06.193Z","mono":239.388,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:26:06.195Z","mono":239.39,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:26:06.835Z","mono":240.03,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:26:07.696Z","mono":240.891,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:26:11.590Z","mono":244.785,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:26:11.594Z","mono":244.789,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:26:11.850Z","mono":245.045,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:26:15.211Z","mono":248.406,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:26:18.253Z","mono":251.447,"frame":{"domain":"termo","type":"update","value":"25","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:26:20.679Z","mono":253.873,"frame":{"domain":"termo","type":"update","value":"24.2","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:26:21.645Z","mono":254.84,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:26:32.137Z","mono":265.332,"frame":{"domain":"termo","type":"update","value":"25.4","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:26:32.142Z","mono":265.337,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:26:32.691Z","mono":265.886,"frame":{"domain":"termo","type":"update","value":"24.9","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:26:32.696Z","mono":265.89,"frame":{"domain":"termo","type":"update","value":"50","gruppo":"ZONA","path":"ZONA.003..UMIDITA"}}
+{"t":"2026-09-25T10:26:36.124Z","mono":269.319,"frame":{"domain":"termo","type":"update","value":"49","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:26:41.646Z","mono":274.841,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:26:41.647Z","mono":274.842,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:26:41.897Z","mono":275.092,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:26:50.635Z","mono":283.83,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:27:01.680Z","mono":294.875,"frame":{"domain":"termo","type":"update","value":"25","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:27:06.409Z","mono":299.604,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:27:06.411Z","mono":299.606,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:27:06.937Z","mono":300.131,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:27:11.700Z","mono":304.895,"frame":{"domain":"termo","type":"update","value":"65.0","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:27:11.705Z","mono":304.9,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:27:11.955Z","mono":305.15,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 65.0 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:27:16.268Z","mono":309.463,"frame":{"domain":"termo","type":"update","value":"24.9","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:27:19.303Z","mono":312.498,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:27:19.638Z","mono":312.832,"frame":{"domain":"termo","type":"update","value":"49","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:27:28.342Z","mono":321.537,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.001..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:27:28.344Z","mono":321.539,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.002..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:27:28.347Z","mono":321.542,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.003..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:27:28.350Z","mono":321.545,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.009..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:27:28.354Z","mono":321.548,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.010..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:27:28.357Z","mono":321.551,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.011..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:27:30.690Z","mono":323.885,"frame":{"domain":"termo","type":"update","value":"25","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:27:41.742Z","mono":334.937,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:27:41.747Z","mono":334.941,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:27:42.010Z","mono":335.205,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:27:43.838Z","mono":337.033,"frame":{"domain":"termo","type":"update","value":"24.4","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:27:59.541Z","mono":352.736,"frame":{"domain":"termo","type":"update","value":"52","gruppo":"ZONA","path":"ZONA.001..UMIDITA"}}
+{"t":"2026-09-25T10:28:06.454Z","mono":359.649,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:28:06.456Z","mono":359.651,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:28:07.066Z","mono":360.26,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:28:11.793Z","mono":364.988,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:28:11.797Z","mono":364.992,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:28:12.081Z","mono":365.276,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:28:21.460Z","mono":374.655,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:28:32.634Z","mono":385.829,"frame":{"domain":"termo","type":"update","value":"24.2","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:28:32.638Z","mono":385.832,"frame":{"domain":"termo","type":"update","value":"53","gruppo":"ZONA","path":"ZONA.001..UMIDITA"}}
+{"t":"2026-09-25T10:28:32.959Z","mono":386.154,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:28:41.848Z","mono":395.043,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:28:41.854Z","mono":395.049,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:28:42.136Z","mono":395.331,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:28:51.777Z","mono":404.972,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:28:55.383Z","mono":408.578,"frame":{"domain":"termo","type":"update","value":"52","gruppo":"ZONA","path":"ZONA.001..UMIDITA"}}
+{"t":"2026-09-25T10:29:06.667Z","mono":419.862,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:29:06.669Z","mono":419.864,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:29:07.174Z","mono":420.369,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:29:11.878Z","mono":425.073,"frame":{"domain":"termo","type":"update","value":"65.0","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:29:11.882Z","mono":425.077,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:29:12.014Z","mono":425.208,"frame":{"domain":"termo","type":"update","value":"24.4","gruppo":"ZONA","path":"ZONA.001..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:29:12.198Z","mono":425.393,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 65.0 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:29:15.963Z","mono":429.158,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:29:20.690Z","mono":433.885,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:29:41.917Z","mono":455.111,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:29:41.921Z","mono":455.116,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:29:42.265Z","mono":455.46,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:29:45.246Z","mono":458.441,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:29:49.688Z","mono":462.883,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:30:06.249Z","mono":479.444,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:30:06.252Z","mono":479.447,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:30:07.309Z","mono":480.504,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:30:11.976Z","mono":485.171,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:30:11.986Z","mono":485.181,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:30:12.324Z","mono":485.519,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:30:14.684Z","mono":487.879,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:30:23.467Z","mono":496.662,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:30:42.029Z","mono":515.224,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:30:42.035Z","mono":515.23,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:30:42.382Z","mono":515.577,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:30:47.693Z","mono":520.888,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:31:02.345Z","mono":535.54,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:31:06.554Z","mono":539.749,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:31:06.556Z","mono":539.751,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:31:07.427Z","mono":540.622,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:31:12.087Z","mono":545.282,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:31:12.090Z","mono":545.285,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:31:12.444Z","mono":545.639,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:31:26.571Z","mono":559.766,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:31:31.182Z","mono":564.377,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:31:42.128Z","mono":575.323,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:31:42.132Z","mono":575.327,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:31:42.506Z","mono":575.701,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:31:46.035Z","mono":579.23,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:32:00.180Z","mono":593.375,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:32:05.824Z","mono":599.019,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:32:05.826Z","mono":599.021,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:32:07.549Z","mono":600.744,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:32:12.184Z","mono":605.379,"frame":{"domain":"termo","type":"update","value":"65.0","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:32:12.186Z","mono":605.381,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:32:12.564Z","mono":605.759,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 65.0 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:32:14.674Z","mono":607.869,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:32:29.179Z","mono":622.374,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:32:32.814Z","mono":626.009,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:32:42.226Z","mono":635.421,"frame":{"domain":"termo","type":"update","value":"63.9","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:32:42.231Z","mono":635.426,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:32:42.621Z","mono":635.816,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.9 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:32:43.683Z","mono":636.878,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:32:53.639Z","mono":646.834,"frame":{"domain":"termo","type":"update","value":"25.5","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:33:05.953Z","mono":659.148,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:33:05.954Z","mono":659.149,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:33:07.660Z","mono":660.856,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:33:08.601Z","mono":661.796,"frame":{"domain":"termo","type":"update","value":"25.4","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:33:08.603Z","mono":661.798,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:33:12.285Z","mono":665.48,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:33:12.288Z","mono":665.483,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:33:12.674Z","mono":665.87,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:33:12.681Z","mono":665.876,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:33:20.060Z","mono":673.255,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:33:22.621Z","mono":675.816,"frame":{"domain":"termo","type":"update","value":"25.5","gruppo":"ZONA","path":"ZONA.002..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:33:22.624Z","mono":675.82,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:33:27.579Z","mono":680.774,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:33:42.327Z","mono":695.522,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:33:42.331Z","mono":695.526,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:33:42.733Z","mono":695.928,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:34:03.302Z","mono":716.497,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790337600, \"main\": {\"temp\": 22.41, \"feels_like\": 21.83, \"temp_min\": 21.97, \"temp_max\": 22.41, \"pressure\": 1021, \"humidity\": 43, \"temp_kf\": 0.44, \"dew_point\": 9.23}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 1}, \"wind\": {\"speed\": 4.69, \"deg\": 81, \"gust\": 9.65}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-25 12:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790337600"}}
+{"t":"2026-09-25T10:34:03.304Z","mono":716.499,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790348400, \"main\": {\"temp\": 21.88, \"feels_like\": 21.3, \"temp_min\": 20.82, \"temp_max\": 21.88, \"pressure\": 1021, \"humidity\": 45, \"temp_kf\": 1.06, \"dew_point\": 9.43}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 5}, \"wind\": {\"speed\": 3.03, \"deg\": 81, \"gust\": 6.37}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-25 15:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790348400"}}
+{"t":"2026-09-25T10:34:03.308Z","mono":716.503,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790359200, \"main\": {\"temp\": 20.34, \"feels_like\": 19.94, \"temp_min\": 19.31, \"temp_max\": 20.34, \"pressure\": 1021, \"humidity\": 58, \"temp_kf\": 1.03, \"dew_point\": 11.81}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 6}, \"wind\": {\"speed\": 1.19, \"deg\": 150, \"gust\": 1.92}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-25 18:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790359200"}}
+{"t":"2026-09-25T10:34:03.311Z","mono":716.506,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790370000, \"main\": {\"temp\": 15.5, \"feels_like\": 14.96, \"temp_min\": 15.5, \"temp_max\": 15.5, \"pressure\": 1022, \"humidity\": 71, \"temp_kf\": 0, \"dew_point\": 10.96}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 3}, \"wind\": {\"speed\": 0.48, \"deg\": 196, \"gust\": 1.1}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-25 21:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790370000"}}
+{"t":"2026-09-25T10:34:03.315Z","mono":716.51,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790380800, \"main\": {\"temp\": 16.06, \"feels_like\": 15.86, \"temp_min\": 16.06, \"temp_max\": 16.06, \"pressure\": 1022, \"humidity\": 82, \"temp_kf\": 0, \"dew_point\": 10.65}, \"weather\": [{\"id\": 802, \"main\": \"Clouds\", \"description\": \"scattered clouds\", \"icon\": \"03n\"}], \"clouds\": {\"all\": 25}, \"wind\": {\"speed\": 2.59, \"deg\": 254, \"gust\": 4.2}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-26 00:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790380800"}}
+{"t":"2026-09-25T10:34:03.317Z","mono":716.512,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790391600, \"main\": {\"temp\": 14.19, \"feels_like\": 13.81, \"temp_min\": 14.19, \"temp_max\": 14.19, \"pressure\": 1022, \"humidity\": 82, \"temp_kf\": 0, \"dew_point\": 10.21}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 2.61, \"deg\": 282, \"gust\": 4.34}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-26 03:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790391600"}}
+{"t":"2026-09-25T10:34:03.320Z","mono":716.516,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790402400, \"main\": {\"temp\": 15.54, \"feels_like\": 15.24, \"temp_min\": 15.54, \"temp_max\": 15.54, \"pressure\": 1023, \"humidity\": 80, \"temp_kf\": 0, \"dew_point\": 9.93}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 9}, \"wind\": {\"speed\": 3.82, \"deg\": 263, \"gust\": 6.49}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-26 06:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790402400"}}
+{"t":"2026-09-25T10:34:03.324Z","mono":716.519,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790413200, \"main\": {\"temp\": 21.46, \"feels_like\": 21.15, \"temp_min\": 21.46, \"temp_max\": 21.46, \"pressure\": 1024, \"humidity\": 57, \"temp_kf\": 0, \"dew_point\": 12.08}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 2}, \"wind\": {\"speed\": 2.24, \"deg\": 292, \"gust\": 5.7}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-26 09:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790413200"}}
+{"t":"2026-09-25T10:34:03.327Z","mono":716.522,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790424000, \"main\": {\"temp\": 23.06, \"feels_like\": 22.62, \"temp_min\": 23.06, \"temp_max\": 23.06, \"pressure\": 1023, \"humidity\": 46, \"temp_kf\": 0, \"dew_point\": 11.14}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 3.24, \"deg\": 50, \"gust\": 7.45}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-26 12:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790424000"}}
+{"t":"2026-09-25T10:34:03.330Z","mono":716.525,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790434800, \"main\": {\"temp\": 22.66, \"feels_like\": 22.31, \"temp_min\": 22.66, \"temp_max\": 22.66, \"pressure\": 1022, \"humidity\": 51, \"temp_kf\": 0, \"dew_point\": 11.8}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 2.73, \"deg\": 46, \"gust\": 5.87}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-26 15:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790434800"}}
+{"t":"2026-09-25T10:34:03.333Z","mono":716.528,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790445600, \"main\": {\"temp\": 20.34, \"feels_like\": 20.15, \"temp_min\": 20.34, \"temp_max\": 20.34, \"pressure\": 1023, \"humidity\": 66, \"temp_kf\": 0, \"dew_point\": 12.91}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 1}, \"wind\": {\"speed\": 0.75, \"deg\": 93, \"gust\": 1.24}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-26 18:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790445600"}}
+{"t":"2026-09-25T10:34:03.336Z","mono":716.531,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790456400, \"main\": {\"temp\": 17.26, \"feels_like\": 17.23, \"temp_min\": 17.26, \"temp_max\": 17.26, \"pressure\": 1023, \"humidity\": 84, \"temp_kf\": 0, \"dew_point\": 12.99}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 3}, \"wind\": {\"speed\": 1.04, \"deg\": 239, \"gust\": 1.88}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-26 21:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790456400"}}
+{"t":"2026-09-25T10:34:03.339Z","mono":716.534,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790467200, \"main\": {\"temp\": 17.16, \"feels_like\": 17.2, \"temp_min\": 17.16, \"temp_max\": 17.16, \"pressure\": 1024, \"humidity\": 87, \"temp_kf\": 0, \"dew_point\": 11.83}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 8}, \"wind\": {\"speed\": 1.87, \"deg\": 252, \"gust\": 3.12}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-27 00:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790467200"}}
+{"t":"2026-09-25T10:34:03.342Z","mono":716.537,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790478000, \"main\": {\"temp\": 12.9, \"feels_like\": 12.49, \"temp_min\": 12.9, \"temp_max\": 12.9, \"pressure\": 1023, \"humidity\": 86, \"temp_kf\": 0, \"dew_point\": 10.62}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 1.86, \"deg\": 261, \"gust\": 3.18}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-27 03:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790478000"}}
+{"t":"2026-09-25T10:34:03.345Z","mono":716.54,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790488800, \"main\": {\"temp\": 13.7, \"feels_like\": 13.19, \"temp_min\": 13.7, \"temp_max\": 13.7, \"pressure\": 1023, \"humidity\": 79, \"temp_kf\": 0, \"dew_point\": 10.09}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 2.75, \"deg\": 265, \"gust\": 4.65}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-27 06:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790488800"}}
+{"t":"2026-09-25T10:34:03.348Z","mono":716.543,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790499600, \"main\": {\"temp\": 21.95, \"feels_like\": 21.58, \"temp_min\": 21.95, \"temp_max\": 21.95, \"pressure\": 1023, \"humidity\": 53, \"temp_kf\": 0, \"dew_point\": 12.24}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 1}, \"wind\": {\"speed\": 1.95, \"deg\": 300, \"gust\": 5.2}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-27 09:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790499600"}}
+{"t":"2026-09-25T10:34:03.351Z","mono":716.547,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790510400, \"main\": {\"temp\": 24.29, \"feels_like\": 24, \"temp_min\": 24.29, \"temp_max\": 24.29, \"pressure\": 1022, \"humidity\": 47, \"temp_kf\": 0, \"dew_point\": 12.6}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 1}, \"wind\": {\"speed\": 2.44, \"deg\": 39, \"gust\": 6.2}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-27 12:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790510400"}}
+{"t":"2026-09-25T10:34:03.355Z","mono":716.55,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790521200, \"main\": {\"temp\": 23.42, \"feels_like\": 23.18, \"temp_min\": 23.42, \"temp_max\": 23.42, \"pressure\": 1021, \"humidity\": 52, \"temp_kf\": 0, \"dew_point\": 13.09}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 2.45, \"deg\": 78, \"gust\": 5.41}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-27 15:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790521200"}}
+{"t":"2026-09-25T10:34:03.357Z","mono":716.553,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790532000, \"main\": {\"temp\": 19.69, \"feels_like\": 19.65, \"temp_min\": 19.69, \"temp_max\": 19.69, \"pressure\": 1021, \"humidity\": 74, \"temp_kf\": 0, \"dew_point\": 15.06}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 1.88, \"deg\": 127, \"gust\": 2.93}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-27 18:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790532000"}}
+{"t":"2026-09-25T10:34:03.360Z","mono":716.556,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790542800, \"main\": {\"temp\": 17.78, \"feels_like\": 17.83, \"temp_min\": 17.78, \"temp_max\": 17.78, \"pressure\": 1022, \"humidity\": 85, \"temp_kf\": 0, \"dew_point\": 15.21}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 0.82, \"deg\": 171, \"gust\": 1.24}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-27 21:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790542800"}}
+{"t":"2026-09-25T10:34:03.378Z","mono":716.573,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790553600, \"main\": {\"temp\": 14.39, \"feels_like\": 14.39, \"temp_min\": 14.39, \"temp_max\": 14.39, \"pressure\": 1022, \"humidity\": 96, \"temp_kf\": 0, \"dew_point\": 13.74}, \"weather\": [{\"id\": 802, \"main\": \"Clouds\", \"description\": \"scattered clouds\", \"icon\": \"03n\"}], \"clouds\": {\"all\": 46}, \"wind\": {\"speed\": 1.35, \"deg\": 249, \"gust\": 2.47}, \"visibility\": 5944, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-28 00:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790553600"}}
+{"t":"2026-09-25T10:34:03.381Z","mono":716.576,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790564400, \"main\": {\"temp\": 13.21, \"feels_like\": 13.09, \"temp_min\": 13.21, \"temp_max\": 13.21, \"pressure\": 1021, \"humidity\": 96, \"temp_kf\": 0, \"dew_point\": 12.66}, \"weather\": [{\"id\": 803, \"main\": \"Clouds\", \"description\": \"broken clouds\", \"icon\": \"04n\"}], \"clouds\": {\"all\": 67}, \"wind\": {\"speed\": 1.58, \"deg\": 243, \"gust\": 2.89}, \"visibility\": 167, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-28 03:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790564400"}}
+{"t":"2026-09-25T10:34:03.383Z","mono":716.578,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790575200, \"main\": {\"temp\": 13.13, \"feels_like\": 12.98, \"temp_min\": 13.13, \"temp_max\": 13.13, \"pressure\": 1022, \"humidity\": 95, \"temp_kf\": 0, \"dew_point\": 12.42}, \"weather\": [{\"id\": 803, \"main\": \"Clouds\", \"description\": \"broken clouds\", \"icon\": \"04d\"}], \"clouds\": {\"all\": 72}, \"wind\": {\"speed\": 1.28, \"deg\": 257, \"gust\": 3.19}, \"visibility\": 4590, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-28 06:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790575200"}}
+{"t":"2026-09-25T10:34:03.386Z","mono":716.581,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790586000, \"main\": {\"temp\": 21.75, \"feels_like\": 21.7, \"temp_min\": 21.75, \"temp_max\": 21.75, \"pressure\": 1022, \"humidity\": 66, \"temp_kf\": 0, \"dew_point\": 15.28}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 1}, \"wind\": {\"speed\": 0.73, \"deg\": 333, \"gust\": 3.66}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-28 09:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790586000"}}
+{"t":"2026-09-25T10:34:03.389Z","mono":716.584,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790596800, \"main\": {\"temp\": 24.1, \"feels_like\": 24.05, \"temp_min\": 24.1, \"temp_max\": 24.1, \"pressure\": 1022, \"humidity\": 57, \"temp_kf\": 0, \"dew_point\": 15.26}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 1}, \"wind\": {\"speed\": 2.81, \"deg\": 65, \"gust\": 6.83}, \"visibility\": 4481, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-28 12:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790596800"}}
+{"t":"2026-09-25T10:34:03.392Z","mono":716.587,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790607600, \"main\": {\"temp\": 23.43, \"feels_like\": 23.4, \"temp_min\": 23.43, \"temp_max\": 23.43, \"pressure\": 1021, \"humidity\": 60, \"temp_kf\": 0, \"dew_point\": 15.34}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 2.58, \"deg\": 87, \"gust\": 5.64}, \"visibility\": 9663, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-28 15:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790607600"}}
+{"t":"2026-09-25T10:34:03.396Z","mono":716.591,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790618400, \"main\": {\"temp\": 20.16, \"feels_like\": 20.27, \"temp_min\": 20.16, \"temp_max\": 20.16, \"pressure\": 1021, \"humidity\": 78, \"temp_kf\": 0, \"dew_point\": 16.28}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 1.78, \"deg\": 117, \"gust\": 2.76}, \"visibility\": 8826, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-28 18:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790618400"}}
+{"t":"2026-09-25T10:34:03.397Z","mono":716.592,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790629200, \"main\": {\"temp\": 17.94, \"feels_like\": 18.11, \"temp_min\": 17.94, \"temp_max\": 17.94, \"pressure\": 1021, \"humidity\": 89, \"temp_kf\": 0, \"dew_point\": 16.19}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 0.94, \"deg\": 189, \"gust\": 1.45}, \"visibility\": 8150, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-28 21:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790629200"}}
+{"t":"2026-09-25T10:34:03.399Z","mono":716.595,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790640000, \"main\": {\"temp\": 15.08, \"feels_like\": 15.18, \"temp_min\": 15.08, \"temp_max\": 15.08, \"pressure\": 1022, \"humidity\": 97, \"temp_kf\": 0, \"dew_point\": 14.66}, \"weather\": [{\"id\": 802, \"main\": \"Clouds\", \"description\": \"scattered clouds\", \"icon\": \"03n\"}], \"clouds\": {\"all\": 48}, \"wind\": {\"speed\": 0.96, \"deg\": 249, \"gust\": 2.05}, \"visibility\": 5696, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-29 00:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790640000"}}
+{"t":"2026-09-25T10:34:03.402Z","mono":716.597,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790650800, \"main\": {\"temp\": 13.71, \"feels_like\": 13.7, \"temp_min\": 13.71, \"temp_max\": 13.71, \"pressure\": 1022, \"humidity\": 98, \"temp_kf\": 0, \"dew_point\": 13.47}, \"weather\": [{\"id\": 804, \"main\": \"Clouds\", \"description\": \"overcast clouds\", \"icon\": \"04n\"}], \"clouds\": {\"all\": 100}, \"wind\": {\"speed\": 1.65, \"deg\": 248, \"gust\": 2.93}, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-29 03:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790650800"}}
+{"t":"2026-09-25T10:34:03.403Z","mono":716.598,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790661600, \"main\": {\"temp\": 13.69, \"feels_like\": 13.65, \"temp_min\": 13.69, \"temp_max\": 13.69, \"pressure\": 1022, \"humidity\": 97, \"temp_kf\": 0, \"dew_point\": 13.3}, \"weather\": [{\"id\": 803, \"main\": \"Clouds\", \"description\": \"broken clouds\", \"icon\": \"04d\"}], \"clouds\": {\"all\": 55}, \"wind\": {\"speed\": 1.6, \"deg\": 257, \"gust\": 3.6}, \"visibility\": 2535, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-29 06:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790661600"}}
+{"t":"2026-09-25T10:34:03.405Z","mono":716.6,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790672400, \"main\": {\"temp\": 21.68, \"feels_like\": 21.76, \"temp_min\": 21.68, \"temp_max\": 21.68, \"pressure\": 1022, \"humidity\": 71, \"temp_kf\": 0, \"dew_point\": 16.38}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 5}, \"wind\": {\"speed\": 0.95, \"deg\": 332, \"gust\": 3.93}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-29 09:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790672400"}}
+{"t":"2026-09-25T10:34:03.408Z","mono":716.603,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790683200, \"main\": {\"temp\": 24.46, \"feels_like\": 24.5, \"temp_min\": 24.46, \"temp_max\": 24.46, \"pressure\": 1022, \"humidity\": 59, \"temp_kf\": 0, \"dew_point\": 16.11}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 2}, \"wind\": {\"speed\": 2.52, \"deg\": 63, \"gust\": 6.36}, \"visibility\": 2944, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-29 12:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790683200"}}
+{"t":"2026-09-25T10:34:03.410Z","mono":716.605,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790694000, \"main\": {\"temp\": 23.68, \"feels_like\": 23.7, \"temp_min\": 23.68, \"temp_max\": 23.68, \"pressure\": 1021, \"humidity\": 61, \"temp_kf\": 0, \"dew_point\": 15.79}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 2.94, \"deg\": 77, \"gust\": 6.23}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-29 15:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790694000"}}
+{"t":"2026-09-25T10:34:03.412Z","mono":716.607,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790704800, \"main\": {\"temp\": 20.4, \"feels_like\": 20.56, \"temp_min\": 20.4, \"temp_max\": 20.4, \"pressure\": 1021, \"humidity\": 79, \"temp_kf\": 0, \"dew_point\": 16.65}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 0}, \"wind\": {\"speed\": 1.59, \"deg\": 129, \"gust\": 2.36}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-29 18:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790704800"}}
+{"t":"2026-09-25T10:34:03.414Z","mono":716.609,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790715600, \"main\": {\"temp\": 18.36, \"feels_like\": 18.63, \"temp_min\": 18.36, \"temp_max\": 18.36, \"pressure\": 1022, \"humidity\": 91, \"temp_kf\": 0, \"dew_point\": 16.85}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01n\"}], \"clouds\": {\"all\": 3}, \"wind\": {\"speed\": 0.7, \"deg\": 198, \"gust\": 1.15}, \"visibility\": 10000, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-29 21:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790715600"}}
+{"t":"2026-09-25T10:34:03.416Z","mono":716.611,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790726400, \"main\": {\"temp\": 15.42, \"feels_like\": 15.58, \"temp_min\": 15.42, \"temp_max\": 15.42, \"pressure\": 1021, \"humidity\": 98, \"temp_kf\": 0, \"dew_point\": 15.09}, \"weather\": [{\"id\": 803, \"main\": \"Clouds\", \"description\": \"broken clouds\", \"icon\": \"04n\"}], \"clouds\": {\"all\": 55}, \"wind\": {\"speed\": 1.2, \"deg\": 248, \"gust\": 2.4}, \"visibility\": 2144, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-30 00:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790726400"}}
+{"t":"2026-09-25T10:34:03.418Z","mono":716.613,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790737200, \"main\": {\"temp\": 14.51, \"feels_like\": 14.55, \"temp_min\": 14.51, \"temp_max\": 14.51, \"pressure\": 1021, \"humidity\": 97, \"temp_kf\": 0, \"dew_point\": 14.04}, \"weather\": [{\"id\": 804, \"main\": \"Clouds\", \"description\": \"overcast clouds\", \"icon\": \"04n\"}], \"clouds\": {\"all\": 92}, \"wind\": {\"speed\": 1.95, \"deg\": 251, \"gust\": 3.67}, \"visibility\": 470, \"pop\": 0, \"sys\": {\"pod\": \"n\"}, \"dt_txt\": \"2026-09-30 03:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790737200"}}
+{"t":"2026-09-25T10:34:03.420Z","mono":716.615,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790748000, \"main\": {\"temp\": 14.86, \"feels_like\": 14.88, \"temp_min\": 14.86, \"temp_max\": 14.86, \"pressure\": 1021, \"humidity\": 95, \"temp_kf\": 0, \"dew_point\": 14.07}, \"weather\": [{\"id\": 803, \"main\": \"Clouds\", \"description\": \"broken clouds\", \"icon\": \"04d\"}], \"clouds\": {\"all\": 53}, \"wind\": {\"speed\": 1.86, \"deg\": 266, \"gust\": 3.83}, \"visibility\": 5915, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-30 06:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790748000"}}
+{"t":"2026-09-25T10:34:03.422Z","mono":716.617,"frame":{"domain":"termo","type":"update","value":"{\"dt\": 1790758800, \"main\": {\"temp\": 22.26, \"feels_like\": 22.4, \"temp_min\": 22.26, \"temp_max\": 22.26, \"pressure\": 1022, \"humidity\": 71, \"temp_kf\": 0, \"dew_point\": 16.88}, \"weather\": [{\"id\": 800, \"main\": \"Clear\", \"description\": \"clear sky\", \"icon\": \"01d\"}], \"clouds\": {\"all\": 7}, \"wind\": {\"speed\": 1.43, \"deg\": 327, \"gust\": 4.57}, \"visibility\": 8969, \"pop\": 0, \"sys\": {\"pod\": \"d\"}, \"dt_txt\": \"2026-09-30 09:00:00\"}","gruppo":"METEO_DATA","path":"METEO_DATA...dt1790758800"}}
+{"t":"2026-09-25T10:34:03.814Z","mono":717.009,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.1..VENTO"}}
+{"t":"2026-09-25T10:34:03.816Z","mono":717.011,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.0..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.819Z","mono":717.014,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO...TEMPERATURE"}}
+{"t":"2026-09-25T10:34:03.821Z","mono":717.016,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.4..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.824Z","mono":717.019,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.2..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.826Z","mono":717.021,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.2..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.828Z","mono":717.024,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.1..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.832Z","mono":717.028,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.5..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.835Z","mono":717.03,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.2..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.839Z","mono":717.034,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.1..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.841Z","mono":717.036,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.5..VENTO"}}
+{"t":"2026-09-25T10:34:03.844Z","mono":717.039,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.2..VENTO"}}
+{"t":"2026-09-25T10:34:03.847Z","mono":717.042,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.5..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.850Z","mono":717.045,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.4..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.853Z","mono":717.048,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.1..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.856Z","mono":717.051,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.3..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.858Z","mono":717.054,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO...DATA"}}
+{"t":"2026-09-25T10:34:03.860Z","mono":717.055,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.3..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.863Z","mono":717.058,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO...POSIZIONE"}}
+{"t":"2026-09-25T10:34:03.865Z","mono":717.06,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.5..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.867Z","mono":717.062,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.3..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.869Z","mono":717.064,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.0..VENTO"}}
+{"t":"2026-09-25T10:34:03.871Z","mono":717.066,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.3..VENTO"}}
+{"t":"2026-09-25T10:34:03.873Z","mono":717.068,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.4..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.875Z","mono":717.07,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.4..VENTO"}}
+{"t":"2026-09-25T10:34:03.876Z","mono":717.071,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.0..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.878Z","mono":717.073,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO.0..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.880Z","mono":717.075,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO...ALLARM_METEO_KEY"}}
+{"t":"2026-09-25T10:34:03.882Z","mono":717.077,"frame":{"domain":"termo","type":"remove","gruppo":"METEO","path":"METEO...UMIDITA"}}
+{"t":"2026-09-25T10:34:03.883Z","mono":717.078,"frame":{"domain":"termo","type":"update","value":"2026-09-25 12:34:02","gruppo":"METEO","path":"METEO...DATA"}}
+{"t":"2026-09-25T10:34:03.885Z","mono":717.08,"frame":{"domain":"termo","type":"update","value":"22.41,21.88,20.34,15.5,16.06,14.19,15.54,21.46,23.06","gruppo":"METEO","path":"METEO...TEMPERATURE"}}
+{"t":"2026-09-25T10:34:03.887Z","mono":717.082,"frame":{"domain":"termo","type":"update","value":"0,0","gruppo":"METEO","path":"METEO.0..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.888Z","mono":717.083,"frame":{"domain":"termo","type":"update","value":"1020.375","gruppo":"METEO","path":"METEO.0..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.890Z","mono":717.085,"frame":{"domain":"termo","type":"update","value":"15.5,22.41","gruppo":"METEO","path":"METEO.0..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.892Z","mono":717.087,"frame":{"domain":"termo","type":"update","value":"3.5437500000000006,112.25","gruppo":"METEO","path":"METEO.0..VENTO"}}
+{"t":"2026-09-25T10:34:03.894Z","mono":717.089,"frame":{"domain":"termo","type":"update","value":"57.75","gruppo":"METEO","path":"METEO...UMIDITA"}}
+{"t":"2026-09-25T10:34:03.895Z","mono":717.091,"frame":{"domain":"termo","type":"update","value":"0,0","gruppo":"METEO","path":"METEO.1..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.897Z","mono":717.092,"frame":{"domain":"termo","type":"update","value":"1022.75","gruppo":"METEO","path":"METEO.1..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.901Z","mono":717.096,"frame":{"domain":"termo","type":"update","value":"14.19,23.06","gruppo":"METEO","path":"METEO.1..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.906Z","mono":717.101,"frame":{"domain":"termo","type":"update","value":"2.3775,189.875","gruppo":"METEO","path":"METEO.1..VENTO"}}
+{"t":"2026-09-25T10:34:03.908Z","mono":717.103,"frame":{"domain":"termo","type":"update","value":"0,0","gruppo":"METEO","path":"METEO.2..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.910Z","mono":717.105,"frame":{"domain":"termo","type":"update","value":"1022.375","gruppo":"METEO","path":"METEO.2..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.913Z","mono":717.108,"frame":{"domain":"termo","type":"update","value":"12.9,24.29","gruppo":"METEO","path":"METEO.2..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.916Z","mono":717.111,"frame":{"domain":"termo","type":"update","value":"2.0025,186.625","gruppo":"METEO","path":"METEO.2..VENTO"}}
+{"t":"2026-09-25T10:34:03.919Z","mono":717.114,"frame":{"domain":"termo","type":"update","value":"0,0","gruppo":"METEO","path":"METEO.3..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.922Z","mono":717.117,"frame":{"domain":"termo","type":"update","value":"1021.5","gruppo":"METEO","path":"METEO.3..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.925Z","mono":717.12,"frame":{"domain":"termo","type":"update","value":"13.13,24.1","gruppo":"METEO","path":"METEO.3..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.928Z","mono":717.123,"frame":{"domain":"termo","type":"update","value":"1.63125,192.5","gruppo":"METEO","path":"METEO.3..VENTO"}}
+{"t":"2026-09-25T10:34:03.932Z","mono":717.127,"frame":{"domain":"termo","type":"update","value":"0,0","gruppo":"METEO","path":"METEO.4..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.934Z","mono":717.129,"frame":{"domain":"termo","type":"update","value":"1021.75","gruppo":"METEO","path":"METEO.4..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.938Z","mono":717.133,"frame":{"domain":"termo","type":"update","value":"13.69,24.46","gruppo":"METEO","path":"METEO.4..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.945Z","mono":717.141,"frame":{"domain":"termo","type":"update","value":"1.6137499999999998,194.125","gruppo":"METEO","path":"METEO.4..VENTO"}}
+{"t":"2026-09-25T10:34:03.948Z","mono":717.144,"frame":{"domain":"termo","type":"update","value":"3,8","gruppo":"METEO","path":"METEO.5..PREVISIONE"}}
+{"t":"2026-09-25T10:34:03.952Z","mono":717.147,"frame":{"domain":"termo","type":"update","value":"1021.25","gruppo":"METEO","path":"METEO.5..PRESSIONE"}}
+{"t":"2026-09-25T10:34:03.955Z","mono":717.15,"frame":{"domain":"termo","type":"update","value":"14.51,22.26","gruppo":"METEO","path":"METEO.5..RANGE_TEMP"}}
+{"t":"2026-09-25T10:34:03.958Z","mono":717.153,"frame":{"domain":"termo","type":"update","value":"1.61,273.0","gruppo":"METEO","path":"METEO.5..VENTO"}}
+{"t":"2026-09-25T10:34:03.961Z","mono":717.156,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"METEO","path":"METEO...ALLARM_METEO_KEY"}}
+{"t":"2026-09-25T10:34:03.964Z","mono":717.159,"frame":{"domain":"termo","type":"update","value":"45.0000000,10.0000000","gruppo":"METEO","path":"METEO...POSIZIONE"}}
+{"t":"2026-09-25T10:34:06.473Z","mono":719.668,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:34:06.475Z","mono":719.67,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:34:07.779Z","mono":720.974,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:34:12.359Z","mono":725.554,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:34:12.362Z","mono":725.557,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:34:12.789Z","mono":725.984,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:34:24.381Z","mono":737.576,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:34:42.395Z","mono":755.59,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:34:42.398Z","mono":755.593,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:34:42.854Z","mono":756.049,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:34:59.684Z","mono":772.879,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:35:06.498Z","mono":779.693,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:35:06.501Z","mono":779.696,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:35:07.884Z","mono":781.079,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:35:12.429Z","mono":785.624,"frame":{"domain":"termo","type":"update","value":"65.0","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:35:12.432Z","mono":785.627,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:35:12.898Z","mono":786.093,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 65.0 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:35:30.541Z","mono":803.736,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:35:42.460Z","mono":815.656,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:35:42.464Z","mono":815.659,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:35:42.964Z","mono":816.159,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:36:05.715Z","mono":838.91,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:36:05.717Z","mono":838.912,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:36:08.009Z","mono":841.204,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:36:12.509Z","mono":845.704,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:36:12.513Z","mono":845.708,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:36:13.025Z","mono":846.22,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:36:21.671Z","mono":854.867,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:36:30.684Z","mono":863.879,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:36:42.561Z","mono":875.757,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:36:42.565Z","mono":875.76,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:36:43.084Z","mono":876.279,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:36:45.173Z","mono":878.368,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:37:05.838Z","mono":899.034,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:37:05.840Z","mono":899.035,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:37:07.134Z","mono":900.329,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"DEUM","path":"DEUM.001..ALLARM_SONDA_RICIRCOLO"}}
+{"t":"2026-09-25T10:37:07.139Z","mono":900.334,"frame":{"domain":"termo","type":"update","value":"250","gruppo":"DEUM","path":"DEUM.001..ALLARME"}}
+{"t":"2026-09-25T10:37:07.145Z","mono":900.341,"frame":{"domain":"termo","type":"update","value":"128","gruppo":"DEUM","path":"DEUM.001..ST_RELE_SBRINAMENTO"}}
+{"t":"2026-09-25T10:37:08.123Z","mono":901.319,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:37:09.797Z","mono":902.992,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:37:12.617Z","mono":905.812,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:37:12.621Z","mono":905.817,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:37:13.138Z","mono":906.333,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:37:21.135Z","mono":914.33,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"DEUM","path":"DEUM.001..ALLARM_SONDA_RICIRCOLO"}}
+{"t":"2026-09-25T10:37:21.142Z","mono":914.337,"frame":{"domain":"termo","type":"update","value":"248","gruppo":"DEUM","path":"DEUM.001..ALLARME"}}
+{"t":"2026-09-25T10:37:21.147Z","mono":914.342,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"DEUM","path":"DEUM.001..ST_RELE_SBRINAMENTO"}}
+{"t":"2026-09-25T10:37:29.242Z","mono":922.437,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.001..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:37:29.244Z","mono":922.439,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.002..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:37:29.246Z","mono":922.442,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.003..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:37:29.251Z","mono":922.446,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.009..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:37:29.253Z","mono":922.448,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.010..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:37:29.258Z","mono":922.453,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.011..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:37:42.650Z","mono":935.845,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:37:42.654Z","mono":935.849,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:37:43.203Z","mono":936.398,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:38:06.069Z","mono":959.264,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:38:06.070Z","mono":959.265,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:38:08.248Z","mono":961.443,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:38:12.709Z","mono":965.905,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:38:12.714Z","mono":965.909,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:38:13.265Z","mono":966.46,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:38:27.308Z","mono":980.503,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:38:35.111Z","mono":988.307,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:38:41.182Z","mono":994.377,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:38:42.743Z","mono":995.939,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:38:42.747Z","mono":995.942,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:38:43.332Z","mono":996.527,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:39:06.207Z","mono":1019.402,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:39:06.209Z","mono":1019.405,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:39:08.374Z","mono":1021.57,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:39:12.778Z","mono":1025.974,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:39:12.782Z","mono":1025.978,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:39:13.393Z","mono":1026.588,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:39:14.161Z","mono":1027.357,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:39:42.820Z","mono":1056.015,"frame":{"domain":"termo","type":"update","value":"62.8","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:39:42.824Z","mono":1056.02,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:39:43.459Z","mono":1056.654,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 62.8 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:40:06.295Z","mono":1079.491,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:40:06.297Z","mono":1079.492,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:40:08.502Z","mono":1081.697,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:40:12.865Z","mono":1086.06,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:40:12.869Z","mono":1086.064,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:40:13.518Z","mono":1086.713,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:40:23.329Z","mono":1096.524,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:40:42.915Z","mono":1116.111,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:40:42.919Z","mono":1116.114,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:40:43.574Z","mono":1116.769,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:41:06.428Z","mono":1139.623,"frame":{"domain":"termo","type":"update","value":"24.1","gruppo":"REHOM","path":"REHOM...TEMP_COM"}}
+{"t":"2026-09-25T10:41:06.431Z","mono":1139.626,"frame":{"domain":"termo","type":"update","value":"24.1","gruppo":"REHOM","path":"REHOM...SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:06.465Z","mono":1139.661,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:41:06.467Z","mono":1139.663,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:41:06.928Z","mono":1140.124,"frame":{"domain":"termo","type":"update","value":"24.1","gruppo":"ZONA","path":"ZONA.002..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:07.152Z","mono":1140.347,"frame":{"domain":"termo","type":"update","value":"24.1","gruppo":"ZONA","path":"ZONA.003..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:08.612Z","mono":1141.807,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:41:09.720Z","mono":1142.915,"frame":{"domain":"termo","type":"update","value":"24.1","gruppo":"ZONA","path":"ZONA.009..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:09.893Z","mono":1143.088,"frame":{"domain":"termo","type":"update","value":"240","gruppo":"FANCOIL","path":"FANCOIL.009..AUTO_ON_OFF"}}
+{"t":"2026-09-25T10:41:10.223Z","mono":1143.419,"frame":{"domain":"termo","type":"update","value":"24.1","gruppo":"ZONA","path":"ZONA.010..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:10.342Z","mono":1143.538,"frame":{"domain":"termo","type":"update","value":"240","gruppo":"FANCOIL","path":"FANCOIL.010..AUTO_ON_OFF"}}
+{"t":"2026-09-25T10:41:10.641Z","mono":1143.836,"frame":{"domain":"termo","type":"update","value":"24.1","gruppo":"ZONA","path":"ZONA.011..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:10.770Z","mono":1143.965,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"REHOM","path":"REHOM...TEMP_COM"}}
+{"t":"2026-09-25T10:41:10.774Z","mono":1143.969,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"REHOM","path":"REHOM...SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:12.960Z","mono":1146.156,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:41:12.963Z","mono":1146.159,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:41:13.624Z","mono":1146.82,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:41:18.445Z","mono":1151.64,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"ZONA","path":"ZONA.001..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:18.540Z","mono":1151.736,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:41:20.977Z","mono":1154.172,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"ZONA","path":"ZONA.002..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:21.191Z","mono":1154.387,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"ZONA","path":"ZONA.003..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:24.019Z","mono":1157.214,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"ZONA","path":"ZONA.009..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:24.191Z","mono":1157.386,"frame":{"domain":"termo","type":"update","value":"3","gruppo":"FANCOIL","path":"FANCOIL.009..AUTO_ON_OFF"}}
+{"t":"2026-09-25T10:41:24.531Z","mono":1157.727,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"ZONA","path":"ZONA.010..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:24.652Z","mono":1157.848,"frame":{"domain":"termo","type":"update","value":"3","gruppo":"FANCOIL","path":"FANCOIL.010..AUTO_ON_OFF"}}
+{"t":"2026-09-25T10:41:25.014Z","mono":1158.209,"frame":{"domain":"termo","type":"update","value":"24","gruppo":"ZONA","path":"ZONA.011..SET_POINT_TEMP"}}
+{"t":"2026-09-25T10:41:32.544Z","mono":1165.74,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"DEUM","path":"DEUM.002..COM_RINNOVO"}}
+{"t":"2026-09-25T10:41:32.550Z","mono":1165.745,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"DEUM","path":"DEUM.002..COM_VENTILA"}}
+{"t":"2026-09-25T10:41:32.575Z","mono":1165.77,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"DEUM","path":"DEUM.002..ST_SER_RINNO"}}
+{"t":"2026-09-25T10:41:32.582Z","mono":1165.778,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"DEUM","path":"DEUM.002..COM_VENTILA"}}
+{"t":"2026-09-25T10:41:33.668Z","mono":1166.863,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"ZONA","path":"ZONA.001..ATTIVA"}}
+{"t":"2026-09-25T10:41:34.036Z","mono":1167.232,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"ZONA","path":"ZONA.009..ATTIVA"}}
+{"t":"2026-09-25T10:41:34.041Z","mono":1167.236,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"ZONA","path":"ZONA.010..ATTIVA"}}
+{"t":"2026-09-25T10:41:35.682Z","mono":1168.878,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:41:43.006Z","mono":1176.202,"frame":{"domain":"termo","type":"update","value":"62.8","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:41:43.009Z","mono":1176.205,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:41:43.676Z","mono":1176.872,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 62.8 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:41:47.174Z","mono":1180.37,"frame":{"domain":"termo","type":"update","value":"40","gruppo":"DEUM","path":"DEUM.002..COM_RINNOVO"}}
+{"t":"2026-09-25T10:41:47.196Z","mono":1180.391,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"DEUM","path":"DEUM.002..COM_COMPR"}}
+{"t":"2026-09-25T10:41:47.199Z","mono":1180.395,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"DEUM","path":"DEUM.002..ST_EV_COND_ARIA"}}
+{"t":"2026-09-25T10:41:47.204Z","mono":1180.399,"frame":{"domain":"termo","type":"update","value":"40","gruppo":"DEUM","path":"DEUM.002..ST_SER_RINNO"}}
+{"t":"2026-09-25T10:41:47.208Z","mono":1180.403,"frame":{"domain":"termo","type":"update","value":"100","gruppo":"DEUM","path":"DEUM.002..ST_DUTY_CICLE"}}
+{"t":"2026-09-25T10:41:47.212Z","mono":1180.407,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"DEUM","path":"DEUM.002..ST_DEUMIDIFICA"}}
+{"t":"2026-09-25T10:41:50.189Z","mono":1183.384,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:41:53.705Z","mono":1186.9,"frame":{"domain":"termo","type":"update","value":"53","gruppo":"ZONA","path":"ZONA.001..UMIDITA"}}
+{"t":"2026-09-25T10:42:05.525Z","mono":1198.721,"frame":{"domain":"termo","type":"update","value":"49","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:42:05.729Z","mono":1198.924,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:42:05.729Z","mono":1198.925,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:42:08.722Z","mono":1201.917,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:42:09.934Z","mono":1203.13,"frame":{"domain":"termo","type":"update","value":"52","gruppo":"ZONA","path":"ZONA.001..UMIDITA"}}
+{"t":"2026-09-25T10:42:13.064Z","mono":1206.259,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:42:13.066Z","mono":1206.262,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:42:13.737Z","mono":1206.933,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:42:18.645Z","mono":1211.841,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.002..UMIDITA"}}
+{"t":"2026-09-25T10:42:20.622Z","mono":1213.818,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:42:33.681Z","mono":1226.877,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:42:43.120Z","mono":1236.315,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:42:43.123Z","mono":1236.319,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:42:43.801Z","mono":1236.997,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:42:48.055Z","mono":1241.25,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"FANCOIL","path":"FANCOIL.002..AUTO_ON_OFF"}}
+{"t":"2026-09-25T10:43:02.133Z","mono":1255.329,"frame":{"domain":"termo","type":"update","value":"3","gruppo":"FANCOIL","path":"FANCOIL.002..AUTO_ON_OFF"}}
+{"t":"2026-09-25T10:43:02.677Z","mono":1255.873,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:43:05.884Z","mono":1259.079,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:43:05.886Z","mono":1259.082,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:43:07.320Z","mono":1260.515,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:43:08.841Z","mono":1262.037,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:43:13.155Z","mono":1266.351,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:43:13.159Z","mono":1266.354,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:43:13.855Z","mono":1267.05,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:43:21.621Z","mono":1274.816,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:43:35.697Z","mono":1288.892,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:43:37.880Z","mono":1291.076,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:43:43.188Z","mono":1296.384,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:43:43.193Z","mono":1296.389,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:43:43.902Z","mono":1297.098,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:43:50.184Z","mono":1303.38,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:44:06.001Z","mono":1319.196,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:44:06.003Z","mono":1319.198,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:44:08.946Z","mono":1322.141,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:44:13.246Z","mono":1326.442,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:44:13.250Z","mono":1326.446,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:44:23.680Z","mono":1336.876,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:44:31.030Z","mono":1344.225,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:44:43.302Z","mono":1356.497,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:44:43.305Z","mono":1356.501,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:44:49.523Z","mono":1362.719,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.003..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:45:06.257Z","mono":1379.452,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:45:06.258Z","mono":1379.454,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:45:09.057Z","mono":1382.253,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:45:13.352Z","mono":1386.548,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:45:13.356Z","mono":1386.551,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:45:14.071Z","mono":1387.267,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:45:21.135Z","mono":1394.331,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:45:35.199Z","mono":1408.395,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:45:43.407Z","mono":1416.603,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:45:43.412Z","mono":1416.608,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:45:44.126Z","mono":1417.322,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:46:06.593Z","mono":1439.789,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:46:06.596Z","mono":1439.792,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:46:09.162Z","mono":1442.358,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:46:13.467Z","mono":1446.663,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:46:13.471Z","mono":1446.667,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:46:14.182Z","mono":1447.377,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:46:20.589Z","mono":1453.785,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:46:43.526Z","mono":1476.722,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:46:43.530Z","mono":1476.725,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:46:44.235Z","mono":1477.431,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:46:48.186Z","mono":1481.382,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:47:05.820Z","mono":1499.016,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:47:05.822Z","mono":1499.018,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:47:09.279Z","mono":1502.474,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:47:13.568Z","mono":1506.763,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:47:13.572Z","mono":1506.768,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:47:14.293Z","mono":1507.489,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:47:15.814Z","mono":1509.01,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:47:17.132Z","mono":1510.327,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:47:30.153Z","mono":1523.348,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.001..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:47:30.155Z","mono":1523.351,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.002..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:47:30.160Z","mono":1523.355,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.003..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:47:30.163Z","mono":1523.359,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.009..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:47:30.166Z","mono":1523.362,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.010..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:47:30.170Z","mono":1523.366,"frame":{"domain":"termo","type":"update","value":"24.0","gruppo":"ZONA","path":"ZONA.011..SETP_TEMP_FORZATO"}}
+{"t":"2026-09-25T10:47:43.628Z","mono":1536.823,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:47:43.632Z","mono":1536.827,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:47:44.344Z","mono":1537.54,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:47:47.687Z","mono":1540.883,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:47:47.746Z","mono":1540.942,"frame":{"domain":"termo","type":"update","value":"25.3","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:48:01.186Z","mono":1554.382,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:48:05.916Z","mono":1559.112,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:48:05.917Z","mono":1559.113,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:48:09.386Z","mono":1562.582,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:48:13.667Z","mono":1566.863,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:48:13.670Z","mono":1566.866,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:48:13.774Z","mono":1566.97,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:48:14.394Z","mono":1567.59,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:48:15.216Z","mono":1568.412,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:48:15.686Z","mono":1568.882,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:48:43.719Z","mono":1596.915,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:48:43.723Z","mono":1596.919,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:48:44.131Z","mono":1597.327,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:48:44.451Z","mono":1597.646,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:49:03.113Z","mono":1616.308,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:49:03.682Z","mono":1616.878,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:49:05.894Z","mono":1619.09,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:49:05.896Z","mono":1619.092,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:49:09.501Z","mono":1622.697,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:49:13.755Z","mono":1626.951,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:49:13.761Z","mono":1626.957,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:49:20.869Z","mono":1634.064,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:49:32.734Z","mono":1645.93,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:49:43.810Z","mono":1657.006,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:49:43.814Z","mono":1657.01,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:49:47.252Z","mono":1660.448,"frame":{"domain":"termo","type":"update","value":"49","gruppo":"ZONA","path":"ZONA.009..UMIDITA"}}
+{"t":"2026-09-25T10:50:00.676Z","mono":1673.872,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.009..UMIDITA"}}
+{"t":"2026-09-25T10:50:01.662Z","mono":1674.858,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:50:05.994Z","mono":1679.189,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:50:05.995Z","mono":1679.191,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:50:09.603Z","mono":1682.799,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:50:13.863Z","mono":1687.059,"frame":{"domain":"termo","type":"update","value":"63.9","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:50:13.866Z","mono":1687.062,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:50:14.618Z","mono":1687.814,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.9 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:50:20.002Z","mono":1693.198,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:50:30.129Z","mono":1703.325,"frame":{"domain":"termo","type":"update","value":"48","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:50:30.680Z","mono":1703.876,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:50:41.179Z","mono":1714.375,"frame":{"domain":"termo","type":"update","value":"51","gruppo":"ZONA","path":"ZONA.003..UMIDITA"}}
+{"t":"2026-09-25T10:50:43.894Z","mono":1717.09,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:50:43.897Z","mono":1717.093,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:50:44.179Z","mono":1717.375,"frame":{"domain":"termo","type":"update","value":"49","gruppo":"ZONA","path":"ZONA.009..UMIDITA"}}
+{"t":"2026-09-25T10:50:44.615Z","mono":1717.811,"frame":{"domain":"termo","type":"update","value":"47","gruppo":"ZONA","path":"ZONA.010..UMIDITA"}}
+{"t":"2026-09-25T10:50:44.664Z","mono":1717.86,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:51:00.030Z","mono":1733.226,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:51:06.269Z","mono":1739.465,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_ALARM"}}
+{"t":"2026-09-25T10:51:06.272Z","mono":1739.467,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:51:09.704Z","mono":1742.9,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"PROC","path":"PROC...WATCHDOG_MASTER"}}
+{"t":"2026-09-25T10:51:10.164Z","mono":1743.36,"frame":{"domain":"termo","type":"update","value":"50","gruppo":"ZONA","path":"ZONA.003..UMIDITA"}}
+{"t":"2026-09-25T10:51:13.953Z","mono":1747.149,"frame":{"domain":"termo","type":"update","value":"64.5","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:51:13.957Z","mono":1747.153,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:51:14.168Z","mono":1747.364,"frame":{"domain":"termo","type":"update","value":"25.1","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:51:14.720Z","mono":1747.916,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 64.5 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:51:28.342Z","mono":1761.538,"frame":{"domain":"termo","type":"update","value":"1","gruppo":"PROC","path":"PROC...INTERNET_ACCESS"}}
+{"t":"2026-09-25T10:51:28.673Z","mono":1761.869,"frame":{"domain":"termo","type":"update","value":"25","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:51:43.183Z","mono":1776.379,"frame":{"domain":"termo","type":"update","value":"25.2","gruppo":"ZONA","path":"ZONA.011..TEMP_AMBIENTE"}}
+{"t":"2026-09-25T10:51:44.018Z","mono":1777.214,"frame":{"domain":"termo","type":"update","value":"63.4","gruppo":"PROC","path":"PROC...TEMP_RASPBERRY"}}
+{"t":"2026-09-25T10:51:44.021Z","mono":1777.217,"frame":{"domain":"termo","type":"update","value":"0","gruppo":"WIFI","path":"WIFI...AVAILABLE"}}
+{"t":"2026-09-25T10:51:44.779Z","mono":1777.975,"frame":{"domain":"termo","type":"update","value":"Temperatura cpu web server 63.4 'C","gruppo":"REHOM","path":"REHOM.14..PROCESS_STATE"}}
+{"t":"2026-09-25T10:51:58.168Z","mono":1791.364,"event":{"event":"disconnect","reason":"max_duration","close_code":1006}}

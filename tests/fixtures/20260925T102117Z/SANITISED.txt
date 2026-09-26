@@ -1,0 +1,53 @@
+Fixtures produced by `rehom-probe sanitize-fixtures` (redaction + pseudonymisation).
+Review before publishing.
+
+{
+  "files": [
+    "alive.json",
+    "config.json",
+    "domotica_config.json",
+    "domotica_object.json",
+    "domotica_rooms.json",
+    "domotica_scenarios.json",
+    "history_CONT_ACQUA_CALDA_.json",
+    "history_CONT_CALORIE_.json",
+    "history_SETP_CORRENTE_001.json",
+    "history_TEMP_AMBIENTE_001.json",
+    "history_TEMP_ESTERNA_.json",
+    "interface.json",
+    "interface_filtered_key_in.json",
+    "interface_filtered_zona_001.json",
+    "me.json",
+    "meta.json",
+    "overrides.json",
+    "plant_conf.json",
+    "requests.jsonl",
+    "watch_meta.json",
+    "ws.jsonl",
+    "records.tsv"
+  ],
+  "skipped": [],
+  "redaction_counts": {
+    "alive.json": 0,
+    "config.json": 0,
+    "domotica_config.json": 0,
+    "domotica_object.json": 0,
+    "domotica_rooms.json": 0,
+    "domotica_scenarios.json": 0,
+    "history_CONT_ACQUA_CALDA_.json": 0,
+    "history_CONT_CALORIE_.json": 0,
+    "history_SETP_CORRENTE_001.json": 0,
+    "history_TEMP_AMBIENTE_001.json": 0,
+    "history_TEMP_ESTERNA_.json": 0,
+    "interface.json": 0,
+    "interface_filtered_key_in.json": 0,
+    "interface_filtered_zona_001.json": 0,
+    "me.json": 0,
+    "meta.json": 0,
+    "overrides.json": 0,
+    "plant_conf.json": 0,
+    "requests.jsonl": 0,
+    "watch_meta.json": 0,
+    "ws.jsonl": 0
+  }
+}
