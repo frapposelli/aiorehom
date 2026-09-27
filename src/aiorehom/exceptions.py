@@ -13,7 +13,7 @@ class RehomError(Exception):
 
 
 class ForbiddenRequestError(RehomError):
-    """A request is not on the read-only allowlist.
+    """A request is not on the allowlist, or a write is not enabled or its body is refused.
 
     Raised before any socket activity takes place.
     """
@@ -61,3 +61,19 @@ class RehomNotReadyError(RehomError):
 
 class CredentialsError(RehomError):
     """Credentials could not be read from the macOS Keychain."""
+
+
+class RehomWriteRefusedError(RehomError):
+    """A write was refused before anything was sent (a guard or precondition failed).
+
+    ``reason`` is a stable machine-readable code (for example ``"house_not_auto"``),
+    suitable as a translation key.
+    """
+
+    def __init__(self, reason: str, message: str) -> None:
+        super().__init__(message)
+        self.reason = reason
+
+
+class RehomWriteNotConfirmedError(RehomError):
+    """A write was accepted (2xx) but the controller did not report the expected values."""

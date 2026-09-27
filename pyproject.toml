@@ -1,6 +1,6 @@
 [project]
 name = "aiorehom"
-version = "0.2.0"
+version = "0.3.0"
 description = "Unofficial async client for the local API of Rehom Radiax (RadiaxWeb) controllers"
 readme = "README.md"
 license = "MIT"

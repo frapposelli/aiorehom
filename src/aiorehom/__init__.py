@@ -1,19 +1,23 @@
-"""aiorehom: async client for the Rehom RadiaxWeb local API (read path).
+"""aiorehom: async client for the Rehom RadiaxWeb local API.
 
 :class:`RehomClient` keeps a live, immutable :class:`RehomState` of one
 controller: a WebSocket-first sync (snapshot, then live frames), batched
 :class:`StateUpdate` notifications, and time-driven rebuilds at
-``state.next_change_at``.  Version 0.2 is read-only: only allowlisted GETs, at
-most one login, and a receive-only WebSocket.
+``state.next_change_at``.  By default it is read-only: only allowlisted GETs, at
+most one login, and a receive-only WebSocket.  Writes are opt-in
+(``allow_writes=True``): each typed ``set_*`` call is planned against the
+current state (:mod:`aiorehom.writes`), sent once through the transport's write
+gate, and confirmed from the controller's own reports.
 
-The read-only probe (``rehom-probe``) ships alongside: an allowlisted read-only
-transport, secret redaction, a normalised record store, a listen-only
-WebSocket capture and an offline replay of captures (``rehom-probe replay``).
+The probe (``rehom-probe``) ships alongside: the allowlisted transport, secret
+redaction, a normalised record store, a listen-only WebSocket capture, an
+offline replay of captures (``rehom-probe replay``) and supervised write tests
+(``rehom-probe write-test``).
 """
 
 from __future__ import annotations
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 from .client import ClientOptions, RehomClient
 from .clock import DeviceClock
@@ -54,6 +58,8 @@ from .exceptions import (
     RehomRedirectError,
     RehomResponseError,
     RehomTimeoutError,
+    RehomWriteNotConfirmedError,
+    RehomWriteRefusedError,
 )
 from .models import (
     Actuator,
@@ -127,6 +133,8 @@ __all__ = [
     "RehomResponseError",
     "RehomState",
     "RehomTimeoutError",
+    "RehomWriteNotConfirmedError",
+    "RehomWriteRefusedError",
     "ScheduleSource",
     "Season",
     "SeasonSchedule",

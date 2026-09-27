@@ -1,4 +1,6 @@
-"""Read-only HTTP transport: the only place in aiorehom that issues HTTP requests.
+"""HTTP transport: the only place in aiorehom that issues HTTP requests.
+
+It is read-only unless created with ``allow_writes=True``.
 
 Safety model
 ------------
@@ -23,6 +25,12 @@ Safety model
   handshake) take a turn in the same queue.
 * The token is held only in memory and sent only on authenticated allowlist
   entries.  It never appears in logs, exceptions or ``repr()``.
+* The two bulk-write paths are refused unless the transport was created with
+  ``allow_writes=True`` (a real ``bool``), and every body must pass
+  :func:`check_write_body`: captured record shapes only, one per-key value
+  domain each, rebuilt from plain ASCII values before it is sent.
+* After :meth:`ReadOnlyTransport.close` nothing more is sent, not even a
+  request that was already waiting for its turn.
 """
 
 from __future__ import annotations
@@ -37,6 +45,7 @@ from collections import deque
 from collections.abc import AsyncIterator, Awaitable, Callable, Mapping, Sequence
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta
+from decimal import Decimal
 from types import MappingProxyType
 from typing import Any, Final, Literal
 from urllib.parse import quote
@@ -59,9 +68,14 @@ from .exceptions import (
 __all__ = [
     "DOMOTICA_RESOURCES",
     "HISTORY_TIME_FORMAT",
+    "INTERFACE_WRITE_PATH",
+    "OVERRIDES_WRITE_PATH",
+    "WRITABLE_INTERFACE_KEYS",
+    "WRITE_BODY_TEMPLATES",
     "ReadOnlyTransport",
     "RequestLogEntry",
     "check_request",
+    "check_write_body",
     "validate_host",
 ]
 
@@ -69,6 +83,69 @@ DEFAULT_PORT: Final = 8000
 HISTORY_TIME_FORMAT: Final = "%Y-%m-%d %H:%M:%S"
 MAX_HISTORY_WINDOW: Final = timedelta(hours=24)
 LOGIN_PATH: Final = "/api/get-token/"
+INTERFACE_WRITE_PATH: Final = "/api/interface/bulk_update/"
+OVERRIDES_WRITE_PATH: Final = "/api/overrides/bulk_update/"
+#: Most records one bulk write may carry (the largest captured write has 3).
+MAX_WRITE_RECORDS: Final = 3
+#: (Gruppo, Key) pairs a write may touch at all.
+WRITABLE_INTERFACE_KEYS: Final = frozenset(
+    {
+        ("REHOM", "MODO"),
+        ("REHOM", "SET_POINT"),
+        ("REHOM", "SET_POINT_TEMP"),
+        ("REHOM", "TEMP_COM"),
+        ("REHOM", "ALG_ATTIVO"),
+        ("ZONA", "SETP_CORRENTE"),
+        ("ZONA", "DELTA_SETP_CORRENTE"),
+        ("DEUM", "COM_VENTILA"),
+        ("DEUM", "ST_MODE"),
+    }
+)
+#: The interface bodies a write may carry: Gruppo -> the allowed ordered Key tuples.
+#: Cross-record value rules are in :func:`_check_interface_body`.
+WRITE_BODY_TEMPLATES: Final[Mapping[str, frozenset[tuple[str, ...]]]] = MappingProxyType(
+    {
+        "REHOM": frozenset(
+            {
+                ("MODO", "SET_POINT"),  # AUTO
+                ("MODO", "SET_POINT", "SET_POINT_TEMP"),  # MANUAL at a level
+                ("TEMP_COM", "SET_POINT_TEMP"),  # comfort temperature
+                ("ALG_ATTIVO",),
+            }
+        ),
+        "ZONA": frozenset({("SETP_CORRENTE",), ("DELTA_SETP_CORRENTE",)}),
+        "DEUM": frozenset({("COM_VENTILA",), ("ST_MODE",)}),
+    }
+)
+#: Integer-valued interface keys and the values a write may set.
+_WRITE_INT_DOMAINS: Final[Mapping[str, frozenset[int]]] = MappingProxyType(
+    {
+        "MODO": frozenset({1, 2}),  # MANUAL, AUTO (never OFF)
+        "SET_POINT": frozenset({0, 1, 2, 3}),
+        "ALG_ATTIVO": frozenset({0, 1}),
+        "SETP_CORRENTE": frozenset({0, 2, 3, 4}),  # schedule or a level (never OFF / PROBE_OFF)
+        "ST_MODE": frozenset({0, 1, 2, 3, 4, 5, 8}),  # never the rapid modes 6 / 7
+        "COM_VENTILA": frozenset(range(101)),
+    }
+)
+_WRITE_TEMPERATURE_KEYS: Final = frozenset({"SET_POINT_TEMP", "TEMP_COM"})
+#: Sanity band for a written temperature (°C); the command layer clamps tighter.
+WRITE_TEMPERATURE_RANGE: Final = (Decimal("5.0"), Decimal("40.0"))
+_INTERFACE_RECORD_FIELDS: Final = frozenset(
+    {"Gruppo", "Unita", "SubUni", "Key", "Valore", "Stato", "Flusso", "path"}
+)
+_OVERRIDE_RECORD_FIELDS: Final = frozenset(
+    {"Gruppo", "Unita", "SubUni", "Key", "Valore", "Impostazione", "Scadenza"}
+)
+# Write-path patterns are ASCII only ([0-9], never \d, which matches any Unicode digit).
+_UNIT_RE: Final = re.compile(r"[0-9]{3}")
+_MASTER_UNIT: Final = "000"
+_OVERRIDE_KEY_RE: Final = re.compile(r"PROG_GIORNO_(?:INVERNO|ESTATE)")
+_PRESET_RE: Final = re.compile(r"[1-9][0-9]?")
+_PROGRAM_RE: Final = re.compile(r"[0-3](?:,[0-3]){47}")
+_WRITE_INT_RE: Final = re.compile(r"0|[1-9][0-9]{0,2}")
+_WRITE_TEMPERATURE_RE: Final = re.compile(r"[1-9][0-9]?(?:\.[0-9])?")
+_WRITE_OFFSET_RE: Final = re.compile(r"-?[0-3]\.0")
 DOMOTICA_RESOURCES: Final = ("object", "rooms", "scenarios", "config")
 DEFAULT_MAX_BODY_BYTES: Final = 32 * 1024 * 1024
 #: Request-log lines kept by default (the most recent; about 300 B each).
@@ -81,9 +158,9 @@ _HOST_RE: Final = re.compile(
 #: Segments of letters/digits/_/-, each optionally followed by one ".ext".
 _PATH_RE: Final = re.compile(r"(?:/[A-Za-z0-9_-]+(?:\.[A-Za-z0-9]+)?)+/?")
 _QUERY_VALUE_RE: Final = re.compile(r"[A-Za-z0-9_.,: -]{0,256}")
-_HISTORY_TIME_RE: Final = re.compile(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}")
+_HISTORY_TIME_RE: Final = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}")
 _HISTORY_KEY_RE: Final = re.compile(r"[A-Z0-9_]{1,64}")
-_HISTORY_UNITA_RE: Final = re.compile(r"(?:\d{3})?")
+_HISTORY_UNITA_RE: Final = re.compile(r"(?:[0-9]{3})?")
 _TOKEN_RE: Final = re.compile(r"[\x21-\x7e]{1,1024}")
 _ENCODE_SAFE: Final = "-_.!~*'()"  # encodeURIComponent's unreserved set (as superagent)
 
@@ -93,6 +170,7 @@ class _Rule:
     auth: bool
     query: Literal["none", "subset", "exact"]
     keys: frozenset[str] = frozenset()
+    write: bool = False
 
 
 _INTERFACE_KEYS: Final = frozenset({"Gruppo", "Unita", "SubUni", "Key", "Key__in"})
@@ -113,6 +191,8 @@ ALLOWLIST: Final[Mapping[tuple[str, str], _Rule]] = MappingProxyType(
         ("GET", "/api/domotica/scenarios/"): _Rule(auth=True, query="none"),
         ("GET", "/api/domotica/config/"): _Rule(auth=True, query="none"),
         ("POST", LOGIN_PATH): _Rule(auth=False, query="none"),
+        ("POST", INTERFACE_WRITE_PATH): _Rule(auth=True, query="none", write=True),
+        ("POST", OVERRIDES_WRITE_PATH): _Rule(auth=True, query="none", write=True),
     }
 )
 
@@ -186,7 +266,7 @@ def check_request(
             raise _forbid(method, path, f"invalid characters in query value for {key[:32]!r}")
     rule = ALLOWLIST.get((method, path))
     if rule is None:
-        raise _forbid(method, path, "not on the read-only allowlist")
+        raise _forbid(method, path, "not on the allowlist")
     keys = set(query)
     if rule.query == "none" and keys:
         raise _forbid(method, path, "no query string allowed")
@@ -197,6 +277,183 @@ def check_request(
     if path == "/api/history/":
         _check_history(query)
     return rule
+
+
+def _plain_str(path: str, rec: Mapping[str, object], name: str) -> str:
+    """``rec[name]`` as an exact, ASCII-only ``str`` (no subclass, no Unicode digits)."""
+    value = rec[name]
+    if type(value) is not str:
+        raise _forbid("POST", path, f"{name} must be a string")
+    if not value.isascii():
+        raise _forbid("POST", path, f"{name} must be ASCII")
+    return value
+
+
+def _check_write_value(path: str, key: str, value: object) -> tuple[str | int, Decimal]:
+    """Check an interface ``Valore`` against its key's domain.
+
+    Returns the value as sent (an exact ``str`` or ``int``) and as a number.
+    """
+    if type(value) is int:
+        if not -999 <= value <= 999:  # bounded before str(): no huge-int conversion
+            raise _forbid("POST", path, f"{key} value out of range")
+        text = str(value)
+    elif type(value) is str:
+        if not value.isascii():
+            raise _forbid("POST", path, "Valore must be ASCII")
+        text = value
+    else:
+        raise _forbid("POST", path, "Valore must be a string or an int")
+    if key in _WRITE_INT_DOMAINS:
+        if _WRITE_INT_RE.fullmatch(text) is None or int(text) not in _WRITE_INT_DOMAINS[key]:
+            raise _forbid("POST", path, f"{key} value out of range")
+        return value, Decimal(int(text))
+    if key in _WRITE_TEMPERATURE_KEYS:
+        low, high = WRITE_TEMPERATURE_RANGE
+        if _WRITE_TEMPERATURE_RE.fullmatch(text) is None or not low <= Decimal(text) <= high:
+            raise _forbid("POST", path, f"{key} must be {low}..{high} with at most one decimal")
+        return value, Decimal(text)
+    if key == "DELTA_SETP_CORRENTE":
+        if type(value) is not str or _WRITE_OFFSET_RE.fullmatch(text) is None:
+            raise _forbid("POST", path, f"{key} must be whole degrees -3..3 spelled like '1.0'")
+        return value, Decimal(text)
+    raise _forbid("POST", path, f"{key[:32]} has no value domain")  # pragma: no cover
+
+
+def _interface_record(path: str, rec: Mapping[str, object]) -> tuple[dict[str, object], Decimal]:
+    """Validate one interface record; return a new plain record and its value as a number."""
+    if any(type(name) is not str for name in rec) or set(rec) != _INTERFACE_RECORD_FIELDS:
+        raise _forbid("POST", path, "interface record fields do not match")
+    gruppo, unita, subuni, key, record_path = (
+        _plain_str(path, rec, name) for name in ("Gruppo", "Unita", "SubUni", "Key", "path")
+    )
+    if (gruppo, key) not in WRITABLE_INTERFACE_KEYS:
+        raise _forbid("POST", path, f"{gruppo[:16]}.{key[:32]} is not writable")
+    if subuni != "":
+        raise _forbid("POST", path, "SubUni must be empty")
+    if (gruppo == "REHOM") != (unita == ""):
+        raise _forbid("POST", path, "Unita does not fit the group")
+    if unita and (_UNIT_RE.fullmatch(unita) is None or unita == _MASTER_UNIT):
+        raise _forbid("POST", path, "Unita must be a 3-digit id other than 000")
+    stato, flusso = rec["Stato"], rec["Flusso"]
+    if type(stato) is not int or stato != 1 or type(flusso) is not int or flusso != 0:
+        raise _forbid("POST", path, "Stato/Flusso must be the ints 1/0")
+    expected_path = f"{gruppo}.{unita}.{subuni}.{key}"
+    if record_path != expected_path:
+        raise _forbid("POST", path, "path does not match the record")
+    valore, number = _check_write_value(path, key, rec["Valore"])
+    record: dict[str, object] = {
+        "Gruppo": gruppo,
+        "Unita": unita,
+        "SubUni": subuni,
+        "Key": key,
+        "Valore": valore,
+        "Stato": 1,
+        "Flusso": 0,
+        "path": expected_path,
+    }
+    return record, number
+
+
+def _check_interface_body(
+    path: str, records: list[dict[str, object]], values: list[Decimal]
+) -> None:
+    """The whole body must be one of :data:`WRITE_BODY_TEMPLATES` with consistent values."""
+    if len({(r["Gruppo"], r["Unita"]) for r in records}) != 1:
+        raise _forbid("POST", path, "a body must touch exactly one Gruppo and one Unita")
+    gruppo = str(records[0]["Gruppo"])
+    keys = tuple(str(r["Key"]) for r in records)
+    if keys not in WRITE_BODY_TEMPLATES.get(gruppo, frozenset()):
+        raise _forbid("POST", path, f"{gruppo[:16]} body {keys!r:.120} is not an allowed shape")
+    by_key = dict(zip(keys, values, strict=True))
+    if keys == ("MODO", "SET_POINT") and not (by_key["MODO"] == 2 and by_key["SET_POINT"] == 0):
+        raise _forbid("POST", path, "a MODO/SET_POINT body must be AUTO (2/0)")
+    if keys == ("MODO", "SET_POINT", "SET_POINT_TEMP") and not (
+        by_key["MODO"] == 1 and 1 <= by_key["SET_POINT"] <= 3
+    ):
+        raise _forbid("POST", path, "a MODO/SET_POINT/SET_POINT_TEMP body must be MANUAL 1..3")
+    if keys == ("TEMP_COM", "SET_POINT_TEMP") and by_key["TEMP_COM"] != by_key["SET_POINT_TEMP"]:
+        raise _forbid("POST", path, "TEMP_COM and SET_POINT_TEMP must be equal")
+
+
+def _override_time(path: str, name: str, text: str) -> datetime:
+    if _HISTORY_TIME_RE.fullmatch(text) is None:
+        raise _forbid("POST", path, f"{name} must be 'YYYY-MM-DD HH:mm:ss'")
+    try:
+        return datetime.strptime(text, HISTORY_TIME_FORMAT)
+    except ValueError:
+        raise _forbid("POST", path, f"{name} is not a valid time") from None
+
+
+def _override_record(path: str, rec: Mapping[str, object]) -> dict[str, object]:
+    """Validate one ``PROG_OVERRIDE`` day-program record; return a new plain record."""
+    if any(type(name) is not str for name in rec) or set(rec) != _OVERRIDE_RECORD_FIELDS:
+        raise _forbid("POST", path, "override record fields do not match")
+    gruppo, unita, subuni, key, valore, impostazione, scadenza = (
+        _plain_str(path, rec, name)
+        for name in ("Gruppo", "Unita", "SubUni", "Key", "Valore", "Impostazione", "Scadenza")
+    )
+    if gruppo != "PROG_OVERRIDE" or _OVERRIDE_KEY_RE.fullmatch(key) is None:
+        raise _forbid("POST", path, "only PROG_OVERRIDE day programs are writable")
+    if _UNIT_RE.fullmatch(unita) is None or unita == _MASTER_UNIT:
+        raise _forbid("POST", path, "Unita must be a 3-digit id other than 000")
+    if _PRESET_RE.fullmatch(subuni) is None:
+        raise _forbid("POST", path, "SubUni must be a preset number 1..99")
+    if _PROGRAM_RE.fullmatch(valore) is None:
+        raise _forbid("POST", path, "Valore must be 48 slot levels 0-3")
+    start = _override_time(path, "Impostazione", impostazione)
+    end = _override_time(path, "Scadenza", scadenza)
+    if start.date() != end.date():
+        raise _forbid("POST", path, "override must start and end on the same day")
+    if not timedelta(0) < end - start <= timedelta(hours=24):
+        raise _forbid("POST", path, "override window must be 0 < length <= 24 h")
+    return {
+        "Gruppo": gruppo,
+        "Unita": unita,
+        "SubUni": subuni,
+        "Key": key,
+        "Valore": valore,
+        "Impostazione": impostazione,
+        "Scadenza": scadenza,
+    }
+
+
+def check_write_body(path: str, records: object) -> list[dict[str, object]]:
+    """Validate a bulk-write body; return newly built plain records.  Pure, no I/O.
+
+    Only the record shapes seen from the official client are accepted:
+    interface records ``{Gruppo, Unita, SubUni, Key, Valore, Stato: 1,
+    Flusso: 0, path}`` whose keys form one of :data:`WRITE_BODY_TEMPLATES`
+    with every value in its key's domain, and exactly one ``PROG_OVERRIDE``
+    day-program record with a same-day ``Impostazione``/``Scadenza`` window.
+
+    The returned records are rebuilt, in the captured key order, from the
+    validated plain values (exact ``str``/``int``, ASCII only), so what is sent
+    is exactly what was checked; the caller's objects are never passed on.
+    """
+    if path not in (INTERFACE_WRITE_PATH, OVERRIDES_WRITE_PATH):
+        raise _forbid("POST", path, "not a write path")
+    if not isinstance(records, Sequence) or isinstance(records, (str, bytes)):
+        raise _forbid("POST", path, "body must be a list of records")
+    items = list(records)
+    limit = MAX_WRITE_RECORDS if path == INTERFACE_WRITE_PATH else 1
+    if not 1 <= len(items) <= limit:
+        raise _forbid("POST", path, f"body must hold 1..{limit} records")
+    out: list[dict[str, object]] = []
+    values: list[Decimal] = []
+    for record in items:
+        if not isinstance(record, Mapping):
+            raise _forbid("POST", path, "each record must be an object")
+        rec = dict(record)
+        if path == INTERFACE_WRITE_PATH:
+            built, number = _interface_record(path, rec)
+            out.append(built)
+            values.append(number)
+        else:
+            out.append(_override_record(path, rec))
+    if path == INTERFACE_WRITE_PATH:
+        _check_interface_body(path, out, values)
+    return out
 
 
 def _check_timeout(timeout: object) -> float:
@@ -272,6 +529,7 @@ class ReadOnlyTransport:
         timeout: float = 10,
         *,
         allow_login: bool = False,
+        allow_writes: bool = False,
         max_body_bytes: int = DEFAULT_MAX_BODY_BYTES,
         clock: Callable[[], float] = time.monotonic,
         sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
@@ -283,6 +541,9 @@ class ReadOnlyTransport:
         self._port = port
         if min_interval < 0 or timeout <= 0:
             raise ValueError("min_interval must be >= 0 and timeout > 0")
+        # The one explicit write opt-in: a real bool only ("false", 1, None... are refused).
+        if allow_writes is not True and allow_writes is not False:
+            raise TypeError("allow_writes must be a bool")
         if request_log_size is not None and (
             isinstance(request_log_size, bool)
             or not isinstance(request_log_size, int)
@@ -298,6 +559,8 @@ class ReadOnlyTransport:
         self._min_interval = float(min_interval)
         self._timeout = float(timeout)
         self._allow_login = allow_login
+        self._allow_writes = allow_writes is True
+        self._closed = False
         self._login_attempted = False
         self._token: str | None = None
         self._max_body = max_body_bytes
@@ -312,7 +575,8 @@ class ReadOnlyTransport:
     def __repr__(self) -> str:
         return (
             f"ReadOnlyTransport(host={self._host!r}, port={self._port}, "
-            f"allow_login={self._allow_login}, has_token={self._token is not None})"
+            f"allow_login={self._allow_login}, allow_writes={self._allow_writes}, "
+            f"has_token={self._token is not None})"
         )
 
     async def __aenter__(self) -> ReadOnlyTransport:
@@ -322,7 +586,16 @@ class ReadOnlyTransport:
         await self.close()
 
     async def close(self) -> None:
-        """Close the session if the transport created it; forget the token."""
+        """Close the session if the transport created it; forget the token.
+
+        The transport cannot be used again: every later request is refused with
+        :class:`~aiorehom.exceptions.RehomConnectionError`, including one already
+        waiting for its turn in the queue, and no new session is ever created.  A
+        request already on the wire when ``close()`` runs is aborted only when the
+        transport owns its session; on a caller-owned session it runs to
+        completion.  Either way it may or may not have reached the controller.
+        """
+        self._closed = True
         self._token = None
         if self._owns_session and self._session is not None:
             await self._session.close()
@@ -339,6 +612,10 @@ class ReadOnlyTransport:
     @property
     def has_token(self) -> bool:
         return self._token is not None
+
+    @property
+    def allow_writes(self) -> bool:
+        return self._allow_writes
 
     @property
     def login_attempted(self) -> bool:
@@ -457,6 +734,23 @@ class ReadOnlyTransport:
             raise _forbid("GET", f"/api/domotica/{resource!s:.40}/", "unknown domotica resource")
         return await self._get_json(f"/api/domotica/{resource}/", timeout=timeout)
 
+    async def post_bulk_update(
+        self,
+        path: str,
+        records: Sequence[Mapping[str, object]],
+        *,
+        timeout: float | None = None,  # noqa: ASYNC109 - per-request aiohttp ClientTimeout
+    ) -> int:
+        """Send one bulk write (``interface`` or ``overrides``); return the HTTP status.
+
+        Refused before any I/O unless the transport was created with
+        ``allow_writes=True`` and the body passes :func:`check_write_body`.
+        Never retried.  The response body is ignored.
+        """
+        body = check_write_body(path, records)
+        raw = await self._request("POST", path, write_body=body, timeout=timeout)
+        return raw.status
+
     # -- internals -----------------------------------------------------------
 
     async def _get_json(
@@ -493,6 +787,8 @@ class ReadOnlyTransport:
         return url
 
     def _ensure_session(self) -> aiohttp.ClientSession:
+        if self._closed:  # never (re)create a session after close()
+            raise RehomConnectionError("the transport is closed")
         if self._session is None:
             self._session = aiohttp.ClientSession(
                 cookie_jar=aiohttp.DummyCookieJar(), trust_env=False
@@ -525,6 +821,7 @@ class ReadOnlyTransport:
         *,
         query: Mapping[str, str] | None = None,
         json_body: Mapping[str, str] | None = None,
+        write_body: list[dict[str, object]] | None = None,
         timeout: float | None = None,  # noqa: ASYNC109 - per-request aiohttp ClientTimeout
     ) -> _Raw:
         total = self._timeout if timeout is None else _check_timeout(timeout)
@@ -534,6 +831,16 @@ class ReadOnlyTransport:
         is_login = method == "POST" and path == LOGIN_PATH
         if json_body is not None and not is_login:
             raise _forbid(method, path, "request bodies are only allowed for login")
+        if rule.write:
+            if self._allow_writes is not True:
+                raise _forbid(method, path, "writes not enabled for this transport")
+            if write_body is None:
+                raise _forbid(method, path, "a write needs a body")
+            write_body = check_write_body(path, write_body)
+        elif write_body is not None:
+            raise _forbid(method, path, "write bodies are only allowed on write paths")
+        if self._closed:
+            raise RehomConnectionError(f"{method} {path}: the transport is closed")
         if is_login:
             if not self._allow_login:
                 raise _forbid(method, path, "login not enabled for this transport")
@@ -542,11 +849,9 @@ class ReadOnlyTransport:
             if json_body is None or set(json_body) != {"username", "password"}:
                 raise _forbid(method, path, "login body must be exactly {username, password}")
             self._login_attempted = True
+        if rule.auth and self._token is None:
+            raise RehomAuthenticationError(None, f"{method} {path}: not logged in")
         headers: dict[str, str] = {"Accept": "application/json"}
-        if rule.auth:
-            if self._token is None:
-                raise RehomAuthenticationError(None, f"{method} {path}: not logged in")
-            headers["Authorization"] = f"Token {self._token}"
         url = self._build_url(path, query_dict)
         guard = SingleSendGuard(method, url)
 
@@ -557,6 +862,14 @@ class ReadOnlyTransport:
         body = b""
         async with self._lock:
             await self._pace()
+            # Re-checked after the wait (close() may have run meanwhile); nothing
+            # below awaits before the send, so close() cannot slip in between.
+            if self._closed:
+                raise RehomConnectionError(f"{method} {path}: the transport is closed")
+            if rule.auth:
+                if self._token is None:
+                    raise RehomAuthenticationError(None, f"{method} {path}: not logged in")
+                headers["Authorization"] = f"Token {self._token}"
             session = self._ensure_session()
             start = self._clock()
             error: str | None = None
@@ -565,7 +878,13 @@ class ReadOnlyTransport:
                     method,
                     url,
                     headers=headers,
-                    json=dict(json_body) if json_body is not None else None,
+                    json=(
+                        dict(json_body)
+                        if json_body is not None
+                        else write_body
+                        if write_body is not None
+                        else None
+                    ),
                     allow_redirects=False,
                     timeout=aiohttp.ClientTimeout(total=total),
                     middlewares=(guard,),
@@ -596,7 +915,7 @@ class ReadOnlyTransport:
                         method=method,
                         path=path,
                         query_keys=sorted(query_dict),
-                        query=None if is_login else dict(query_dict),
+                        query=None if is_login or rule.write else dict(query_dict),
                         status=status,
                         latency_ms=round((end - start) * 1000.0, 1),
                         bytes=len(body),

@@ -6,11 +6,11 @@ import dataclasses
 import inspect
 
 import aiorehom
-from aiorehom import enums, models
+from aiorehom import enums, exceptions, models
 
 
 def test_version() -> None:
-    assert aiorehom.__version__ == "0.2.0"
+    assert aiorehom.__version__ == "0.3.0"
 
 
 def test_every_model_and_enum_is_exported() -> None:
@@ -27,8 +27,16 @@ def test_every_model_and_enum_is_exported() -> None:
         for name, obj in vars(enums).items()
         if inspect.isclass(obj) and obj.__module__ == enums.__name__ and not name.startswith("_")
     }
+    error_classes = {
+        name
+        for name, obj in vars(exceptions).items()
+        if inspect.isclass(obj)
+        and issubclass(obj, Exception)
+        and obj.__module__ == exceptions.__name__
+    }
     assert model_classes <= public
     assert enum_classes <= public
+    assert {"RehomWriteRefusedError", "RehomWriteNotConfirmedError"} <= error_classes <= public
     assert {
         "RehomClient",
         "ClientOptions",

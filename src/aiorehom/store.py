@@ -82,7 +82,7 @@ def normalise_row(row: Mapping[str, Any]) -> dict[str, Any]:
 
     Identity fields and ``Valore`` become strings, ``path`` is rebuilt, and a
     received ``path`` that differs from the rebuilt one is kept as
-    ``path_received`` (a live check for Q9).
+    ``path_received``, so a mismatch seen live stays visible.
     """
     key = record_key(row)
     out: dict[str, Any] = dict(zip(_IDENTITY_FIELDS, key, strict=True))

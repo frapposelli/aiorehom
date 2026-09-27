@@ -1,4 +1,7 @@
-"""``rehom-probe``: read-only probe for the Rehom RadiaxWeb local API.
+"""``rehom-probe``: probe for the Rehom RadiaxWeb local API.
+
+Every subcommand is read-only except ``write-test --execute``, which sends one
+supervised write, verifies it and reverts it.
 
 No subcommand can issue a request outside the transport allowlist, and there
 is no raw-request command.  Output files are written with mode 0o600 and
@@ -6,7 +9,10 @@ directories with mode 0o700.
 
 Default locations are derived at run time, never hard-coded: captures go to
 ``$REHOM_PROBE_CAPTURE_ROOT``, else ``./captures``.  The optional record
-catalogue is ``--catalog``, else ``$REHOM_PROBE_CATALOG``.
+catalogue is ``--catalog``, else ``$REHOM_PROBE_CATALOG``.  The write-test
+journal is ``--journal``, else ``$REHOM_WRITE_JOURNAL``, else the per-user
+``$XDG_STATE_HOME/aiorehom/write-tests/journal.jsonl`` (absolute, so every run
+sees the same journal whatever the working directory).
 """
 
 from __future__ import annotations
@@ -15,6 +21,7 @@ import argparse
 import asyncio
 import contextlib
 import json
+import math
 import os
 import secrets
 import signal
@@ -42,7 +49,7 @@ from ._files import (
 )
 from .client import ClientOptions, RehomClient
 from .clock import VirtualClock
-from .credentials import DEFAULT_SERVICE
+from .credentials import DEFAULT_SERVICE, read_keychain_credentials
 from .enums import UpdateReason
 from .exceptions import ForbiddenRequestError, RehomError
 from .fixtures import sanitize_capture
@@ -74,11 +81,23 @@ from .replay import (
 )
 from .transport import ReadOnlyTransport
 from .websocket import listen_only
+from .writetest import (
+    OPERATIONS,
+    VMC_MODE_DWELL_S,
+    WriteTestError,
+    build_operation,
+    check_arguments,
+    close_entry,
+    open_entries,
+    run_write_test,
+)
 
 DEFAULT_HOST: Final = "rehomserver.local"
 DEFAULT_PORT: Final = 8000
 CAPTURE_ROOT_ENV: Final = "REHOM_PROBE_CAPTURE_ROOT"
 CATALOG_ENV: Final = "REHOM_PROBE_CATALOG"
+WRITE_JOURNAL_ENV: Final = "REHOM_WRITE_JOURNAL"
+WRITE_TEST_MAX_DWELL_S: Final = 3600.0
 SESSION_MIN_INTERVAL_S: Final = 1.0
 WATCH_MAX_MINUTES: Final = 120
 LATENCY_MAX_SECONDS: Final = 600
@@ -106,6 +125,26 @@ def default_catalog() -> Path | None:
     """``$REHOM_PROBE_CATALOG``, else ``None`` (coverage is skipped)."""
     env = os.environ.get(CATALOG_ENV)
     return Path(env) if env else None
+
+
+def default_write_journal() -> Path:
+    """``$REHOM_WRITE_JOURNAL``, else ``$XDG_STATE_HOME/aiorehom/write-tests/journal.jsonl``.
+
+    ``XDG_STATE_HOME`` defaults to ``~/.local/state`` (a relative value is
+    ignored, as the XDG spec requires).  The result is absolute; a relative
+    ``$REHOM_WRITE_JOURNAL`` is refused, since it would make the open-entry
+    interlock depend on the working directory.
+    """
+    env = os.environ.get(WRITE_JOURNAL_ENV)
+    if env:
+        path = Path(env).expanduser()
+        if not path.is_absolute():
+            raise ValueError(f"${WRITE_JOURNAL_ENV} must be an absolute path")
+        return path.resolve()
+    state_home = Path(os.environ.get("XDG_STATE_HOME") or "~/.local/state").expanduser()
+    if not state_home.is_absolute():
+        state_home = Path.home() / ".local" / "state"
+    return (state_home / "aiorehom" / "write-tests" / "journal.jsonl").resolve()
 
 
 # ---------------------------------------------------------------------------
@@ -161,6 +200,18 @@ def _port(text: str) -> int:
     return value
 
 
+def _dwell(text: str) -> float:
+    try:
+        value = float(text)
+    except ValueError:
+        raise argparse.ArgumentTypeError("--dwell must be a number of seconds") from None
+    if not math.isfinite(value) or not 1 <= value <= WRITE_TEST_MAX_DWELL_S:
+        raise argparse.ArgumentTypeError(
+            f"--dwell must be between 1 and {WRITE_TEST_MAX_DWELL_S:g} seconds"
+        )
+    return value
+
+
 def _hms(text: str) -> dt_time:
     try:
         value = dt_time.fromisoformat(text)
@@ -175,8 +226,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="rehom-probe",
         description=(
-            "Read-only probe for the Rehom RadiaxWeb local API. Only allowlisted GETs, "
-            "one optional login and a listen-only WebSocket; everything saved is redacted."
+            "Probe for the Rehom RadiaxWeb local API. Only allowlisted requests, one "
+            "optional login and a listen-only WebSocket; read-only except "
+            "'write-test --execute'; everything saved is redacted."
         ),
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -298,6 +350,39 @@ def build_parser() -> argparse.ArgumentParser:
         "--random-salt",
         action="store_true",
         help="use a random one-off salt (not stored): the fixtures cannot be regenerated",
+    )
+
+    wt = sub.add_parser(
+        "write-test",
+        help="supervised write test: one write, verified, then reverted (dry run by default)",
+    )
+    wt.add_argument("--op", choices=sorted(OPERATIONS), help="the operation to test")
+    wt.add_argument("--target", default=None, help="zone or VMC id (e.g. 001)")
+    wt.add_argument("--value", default=None, help="the forward value (see --list)")
+    wt.add_argument("--execute", action="store_true", help="really send the writes")
+    wt.add_argument(
+        "--dwell",
+        type=_dwell,
+        default=None,
+        help=(
+            f"override the dwell, 1..{WRITE_TEST_MAX_DWELL_S:g} s "
+            f"(vmc-mode: at least {VMC_MODE_DWELL_S:g} s)"
+        ),
+    )
+    wt.add_argument(
+        "--journal",
+        type=Path,
+        default=None,
+        help=(
+            f"write-ahead journal (default ${WRITE_JOURNAL_ENV}, else "
+            "$XDG_STATE_HOME/aiorehom/write-tests/journal.jsonl, XDG_STATE_HOME defaulting "
+            "to ~/.local/state)"
+        ),
+    )
+    wt.add_argument("--list", action="store_true", help="list operations and exit")
+    wt.add_argument("--status", action="store_true", help="show open journal entries and exit")
+    wt.add_argument(
+        "--close", metavar="ID", default=None, help="close an entry after restoring it by hand"
     )
 
     replay = sub.add_parser(
@@ -846,6 +931,110 @@ async def cmd_replay(args: argparse.Namespace) -> int:
 
 
 # ---------------------------------------------------------------------------
+# write-test
+# ---------------------------------------------------------------------------
+
+
+def _journal_path(args: argparse.Namespace) -> Path:
+    if args.journal is not None:
+        return Path(args.journal).expanduser().resolve()
+    return default_write_journal()
+
+
+def _wall_now() -> datetime:
+    """The write-test command's clock (a module function so tests can replace it)."""
+    return datetime.now(UTC)
+
+
+async def _wall_sleep(seconds: float) -> None:
+    """The write-test command's sleep (a module function so tests can replace it)."""
+    await asyncio.sleep(seconds)
+
+
+def _write_test_status(journal: Path) -> int:
+    entries = open_entries(journal)
+    for entry in entries:
+        _echo(
+            f"OPEN {entry['id']}: {entry.get('summary')} originals={entry.get('originals')} "
+            f"raw={entry.get('before')}"
+        )
+    _echo(f"{len(entries)} open entr{'y' if len(entries) == 1 else 'ies'} in {journal}")
+    return 1 if entries else 0
+
+
+async def _write_test_session(args: argparse.Namespace, journal: Path) -> int:
+    username, password = await read_keychain_credentials(args.service, username=args.username)
+    client = RehomClient(
+        args.host,
+        port=args.port,
+        username=username,
+        password=password,
+        allow_writes=args.execute is True,
+    )
+    del password
+    try:
+        await client.connect()
+        if args.execute:
+            wait = client.options.alarm_debounce + 5
+            _echo(f"connected; waiting {wait:g} s so alarms are debounced before pre-flight")
+            await _wall_sleep(wait)
+        await run_write_test(
+            client,
+            lambda st: build_operation(st, args.op, args.target, args.value),
+            journal=journal,
+            execute=args.execute is True,
+            echo=_echo,
+            sleep=_wall_sleep,
+            now=_wall_now,
+            dwell_s=args.dwell,
+        )
+    finally:
+        await client.close()
+    return 0
+
+
+async def cmd_write_test(args: argparse.Namespace) -> int:
+    """Supervised write test (see :mod:`aiorehom.writetest`).
+
+    Exit codes: 0 done, 1 another error (``--status``: open entries), 2 bad
+    arguments, 4 refused or stopped (a stopped test's journal entry stays open).
+    """
+    if args.list:
+        for name, usage in sorted(OPERATIONS.items()):
+            _echo(f"{name:13} {usage}")
+        return 0
+    try:
+        journal = _journal_path(args)
+        if args.status:
+            return _write_test_status(journal)
+        if args.close is not None:
+            close_entry(journal, args.close, "closed by the owner after manual restore")
+            _echo(f"closed {args.close} in {journal}")
+            return 0
+        # Every argument is checked before the Keychain is read or anything connects.
+        if args.op is None or args.value is None:
+            _err("--op and --value are required (see --list)")
+            return 2
+        check_arguments(args.op, args.target, args.value)
+        if args.op == "vmc-mode" and args.dwell is not None and args.dwell < VMC_MODE_DWELL_S:
+            _err(f"vmc-mode needs a dwell of at least {VMC_MODE_DWELL_S:g} s")
+            return 2
+        _echo(f"journal: {journal}")
+        return await _write_test_session(args, journal)
+    except ValueError as err:
+        _err(str(err))
+        return 2
+    except WriteTestError as err:
+        _err(str(err))
+        return 4
+    except ForbiddenRequestError:
+        raise
+    except RehomError as err:
+        _err(f"{type(err).__name__}: {err}")
+        return 1
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -855,6 +1044,7 @@ _ASYNC_COMMANDS: Final[dict[str, Callable[[argparse.Namespace], Coroutine[Any, A
     "watch": cmd_watch,
     "latency": cmd_latency,
     "replay": cmd_replay,
+    "write-test": cmd_write_test,
 }
 _SYNC_COMMANDS: Final[dict[str, Callable[[argparse.Namespace], int]]] = {
     "inventory": cmd_inventory,

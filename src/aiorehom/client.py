@@ -1,4 +1,4 @@
-"""``RehomClient``: the read path of one Rehom RadiaxWeb controller.
+"""``RehomClient``: a live client of one Rehom RadiaxWeb controller (reads plus opt-in writes).
 
 The client keeps a live, immutable :class:`~aiorehom.models.RehomState`:
 
@@ -20,9 +20,10 @@ The client keeps a live, immutable :class:`~aiorehom.models.RehomState`:
   anything.  A failed resync is retried after ``min_resync_interval``
   (doubling up to ``resync_interval``) and counted in :attr:`RehomClient.stats`.
 
-Version 0.2 is read-only: there is no write API and no re-login.  The client uses only
-:class:`~aiorehom.sync.ReadTransport` methods (GETs plus at most one login)
-and a receive-only WebSocket.  All timing goes through the injected
+There is no re-login.  Unless created with ``allow_writes=True``, the client
+uses only :class:`~aiorehom.sync.ReadTransport` methods (GETs plus at most one
+login); writes are the ``set_*`` methods (see :class:`RehomClient`).  The
+WebSocket is receive-only.  All timing goes through the injected
 :class:`~aiorehom.clock.Clock`.
 """
 
@@ -51,16 +52,28 @@ from .clock import (
     async_load_zone,
     measured_skew,
 )
-from .enums import ConnectionState, HistorySeries, UpdateReason
+from .enums import (
+    ConnectionState,
+    HistorySeries,
+    MasterPreset,
+    UpdateReason,
+    VmcMode,
+    ZoneSetp,
+)
 from .exceptions import (
     ForbiddenRequestError,
     RehomConnectionError,
     RehomError,
     RehomNotReadyError,
     RehomResponseError,
+    RehomTimeoutError,
+    RehomWriteNotConfirmedError,
+    RehomWriteRefusedError,
 )
+from .logic.parse import parse_device_timestamp
 from .models import HistorySample, RehomState, StateUpdate, SyncStats
-from .state import ChangeSet, StoreSet, StoreView, parse_config
+from .state import ChangeSet, RowView, StoreSet, StoreView, parse_config
+from .store import OVERRIDE_GRUPPO
 from .sync import (
     Batcher,
     FrameProcessor,
@@ -72,8 +85,19 @@ from .sync import (
     fetch_snapshot,
 )
 from .transport import HISTORY_TIME_FORMAT, ReadOnlyTransport, validate_host
-from .values import parse_float
+from .values import parse_float, values_equal
 from .websocket import STABLE_CONNECTION_S, backoff_delay, open_receive_only
+from .writes import (
+    WritePlan,
+    plan_comfort_temperature,
+    plan_house_preset,
+    plan_predictive,
+    plan_temporary_comfort,
+    plan_vmc_fan,
+    plan_vmc_mode,
+    plan_zone_mode,
+    plan_zone_offset,
+)
 
 __all__ = ["ClientOptions", "RehomClient", "StateBuilderProtocol"]
 
@@ -127,6 +151,8 @@ _FLOAT_BOUNDS: Final[dict[str, tuple[float | None, bool, float | None]]] = {
     "forecast_burst_gap": (0.0, False, None),
     "history_chunk_spacing": (5.0, True, None),
     "clock_tick_margin": (0.0, True, 1.0),
+    "write_confirm_timeout": (5.0, True, 120.0),
+    "write_poll_interval": (0.0, False, 5.0),
 }
 #: Like ``_FLOAT_BOUNDS``, for fields where ``None`` disables the feature.
 _OPTIONAL_FLOAT_BOUNDS: Final[dict[str, tuple[float | None, bool, float | None]]] = {
@@ -167,6 +193,8 @@ class ClientOptions:
     max_buffered_frames: int = 5000
     history_chunk_spacing: float = 5.0
     clock_tick_margin: float = 0.05
+    write_confirm_timeout: float = 20.0
+    write_poll_interval: float = 0.25
 
     def __post_init__(self) -> None:
         bounds = [
@@ -186,6 +214,18 @@ class ClientOptions:
         for name, low_int in _INT_BOUNDS.items():
             if _integer(name, getattr(self, name)) < low_int:
                 raise ValueError(f"{name} must be >= {low_int}")
+
+
+class WriteTransport(Protocol):
+    """The write half of the transport (``ReadOnlyTransport`` with ``allow_writes=True``)."""
+
+    async def post_bulk_update(
+        self,
+        path: str,
+        records: Any,
+        *,
+        timeout: float | None = None,  # noqa: ASYNC109 - per-request aiohttp ClientTimeout
+    ) -> int: ...
 
 
 class StateBuilderProtocol(Protocol):
@@ -261,7 +301,16 @@ class _Streak:
 
 
 class RehomClient:
-    """Read-only client of one Rehom controller (see the module docstring).
+    """Client of one Rehom controller (see the module docstring).
+
+    Writes need ``allow_writes=True`` (an exact bool).  The ``set_*`` methods run
+    one at a time in call order, each planned against the latest state (see
+    :mod:`aiorehom.writes`), sent once, never retried, and confirmed from the
+    controller's echo or, failing that, one resync.  They return ``False`` when
+    nothing needed sending.  :class:`~aiorehom.exceptions.RehomWriteNotConfirmedError`
+    means the POST was accepted but not confirmed; any other error raised by
+    the POST itself (a timeout in particular) means it may or may not have
+    landed.
 
     ``session``: an optional caller-owned ``aiohttp.ClientSession`` for the REST
     requests (for example Home Assistant's shared session).  It is never
@@ -287,8 +336,14 @@ class RehomClient:
         clock: Clock | None = None,
         builder: StateBuilderProtocol | None = None,
         rng: Callable[[], float] | None = None,
+        allow_writes: bool = False,
     ) -> None:
         self._host = validate_host(host)
+        # The one write opt-in: an exact bool, never coerced (bool("false") is True).
+        flag: object = allow_writes
+        if not isinstance(flag, bool):
+            raise TypeError("allow_writes must be a bool")
+        self._allow_writes = flag
         for name, value in (("port", port), ("ws_port", ws_port)):
             if isinstance(value, bool) or not isinstance(value, int) or not 1 <= value <= 65535:
                 raise ValueError(f"invalid {name}")
@@ -310,6 +365,7 @@ class RehomClient:
                 min_interval=opts.request_min_interval,
                 timeout=opts.request_timeout,
                 allow_login=True,
+                allow_writes=self._allow_writes,
                 clock=self._clock.monotonic,
                 sleep=self._clock.sleep,
                 request_log_size=_CLIENT_REQUEST_LOG_SIZE,
@@ -331,6 +387,10 @@ class RehomClient:
                 raise ValueError("session must be None when a transport is injected")
             if ws_connector is None:
                 raise ValueError("ws_connector must be injected together with a transport")
+            if self._allow_writes is True and not callable(
+                getattr(transport, "post_bulk_update", None)
+            ):
+                raise ValueError("allow_writes needs a transport with post_bulk_update()")
             self._transport = transport
             self._owns_transport = False
         self._ws_connector: WsConnector = ws_connector
@@ -405,6 +465,8 @@ class RehomClient:
         self._sync_failure_streak = 0
         self._last_sync_error: str | None = None
         self._ws_idle_timeouts = 0
+        # writes: one at a time, in call order (asyncio.Lock wakes waiters FIFO)
+        self._write_lock = asyncio.Lock()
 
     # -- public properties -------------------------------------------------
 
@@ -486,6 +548,11 @@ class RehomClient:
             last_sync_error=self._last_sync_error,
             ws_idle_timeouts=self._ws_idle_timeouts,
         )
+
+    @property
+    def allow_writes(self) -> bool:
+        """Whether this client was created with ``allow_writes=True``."""
+        return self._allow_writes
 
     def subscribe(self, callback: Callable[[StateUpdate], None]) -> Callable[[], None]:
         """Call ``callback(update)`` after each published update; returns ``unsubscribe``."""
@@ -579,6 +646,10 @@ class RehomClient:
 
         Every call finishes whatever is still running, so a ``close()`` that was
         itself cancelled (the cancellation propagates) can simply be repeated.
+        A write not yet sent is refused (:class:`RehomNotReadyError`); one
+        already sent stops waiting for its confirmation and raises
+        :class:`RehomWriteNotConfirmedError`.  A POST already in flight is not
+        awaited: it may or may not land.
         """
         if not self._closed:
             self._closed = True
@@ -1084,6 +1155,179 @@ class RehomClient:
 
     # -- diagnostics -------------------------------------------------------------
 
+    def record_values(self) -> dict[str, str]:
+        """Every interface and override record as ``{path: raw value}``.
+
+        Raw values include secrets: never log or persist the result unredacted.
+        """
+        out = {row.path: row.value for row in self._stores.interface_rows()}
+        out.update({row.path: row.value for row in self._stores.override_rows()})
+        return out
+
+    # -- writes ----------------------------------------------------------------
+
+    async def set_house_preset(self, preset: MasterPreset) -> bool:
+        """House AUTO or MANUAL at ECONOMY / PRE_COMFORT / COMFORT (see :mod:`aiorehom.writes`).
+
+        Returns ``False`` when nothing needed sending (already in that state).
+        """
+        return await self._execute(lambda st: plan_house_preset(st, preset))
+
+    async def set_comfort_temperature(self, temperature: float) -> bool:
+        """Set the comfort temperature (house must be MANUAL/COMFORT)."""
+        return await self._execute(lambda st: plan_comfort_temperature(st, temperature))
+
+    async def set_predictive(self, enabled: bool) -> bool:
+        """Switch the predictive algorithm (house must be in AUTO)."""
+        return await self._execute(lambda st: plan_predictive(st, enabled))
+
+    async def set_zone_offset(self, zone_id: str, offset: int) -> bool:
+        """Set a zone's whole-degree offset (-3..+3)."""
+        return await self._execute(lambda st: plan_zone_offset(st, zone_id, offset))
+
+    async def set_zone_mode(self, zone_id: str, setp: ZoneSetp) -> bool:
+        """Put a zone on its schedule (``ZoneSetp.UNSET``) or at a manual level."""
+        return await self._execute(lambda st: plan_zone_mode(st, zone_id, setp))
+
+    async def set_temporary_comfort(self, zone_id: str, minutes: int) -> bool:
+        """Force COMFORT on a zone for ``minutes`` from now (or extend an active one)."""
+        return await self._execute(
+            lambda st: plan_temporary_comfort(st, zone_id, minutes, self._clock.utcnow())
+        )
+
+    async def set_vmc_fan(self, vmc_id: str, value: int) -> bool:
+        """Set a VMC's fan speed (discrete :class:`FanSpeed` or a continuous value)."""
+        return await self._execute(lambda st: plan_vmc_fan(st, vmc_id, value))
+
+    async def set_vmc_mode(self, vmc_id: str, mode: VmcMode) -> bool:
+        """Set a VMC's operating mode."""
+        return await self._execute(lambda st: plan_vmc_mode(st, vmc_id, mode))
+
+    def _override_row(self, path: str) -> RowView | None:
+        _gruppo, unita, subuni, key = path.split(".", 3)
+        for row in self._stores.override_rows():
+            if (row.unita, row.subuni, row.key) == (unita, subuni, key):
+                return row
+        return None
+
+    def _current_value(self, path: str) -> str | None:
+        gruppo, unita, subuni, key = path.split(".", 3)
+        if gruppo == OVERRIDE_GRUPPO:
+            row = self._override_row(path)
+            return None if row is None else row.value
+        return self._stores.value(gruppo, unita, subuni, key)
+
+    def _window_matches(self, path: str, window: tuple[str, str]) -> bool:
+        row = self._override_row(path)
+        if row is None:
+            return False
+        start, end = window
+        return _same_device_time(row.impostazione, start) and _same_device_time(row.scadenza, end)
+
+    def _confirmed(self, plan: WritePlan) -> bool:
+        """The stores report every expected value and override window of ``plan``."""
+        return all(
+            values_equal(self._current_value(path), value) for path, value in plan.expect.items()
+        ) and all(self._window_matches(path, window) for path, window in plan.expect_window.items())
+
+    async def _execute(self, planner: Callable[[RehomState], WritePlan]) -> bool:
+        """Plan against the latest state, send once, and wait for the controller to report it.
+
+        Writes run one at a time in call order.  Inside the lock the open
+        notify batch is published first: the controller echoes a write before
+        its POST returns, so the previous write's echo may still sit in the
+        batch window, and the plan must see it.  The batch is published again
+        before returning ``True``, so ``state`` shows a confirmed write as soon
+        as the call returns.  Returns ``False`` if the controller already
+        reports the requested values (nothing sent), ``True`` once a sent write
+        is confirmed.  Nothing is ever retried.
+
+        Raises:
+            RehomWriteRefusedError: refused before sending (read-only client,
+                controller unavailable, or a planner guard).
+            RehomNotReadyError: no complete sync yet, or the client is closed;
+                nothing was sent.
+            RehomWriteNotConfirmedError: the POST was accepted (2xx) but the
+                write was not confirmed, including when the confirming resync
+                failed or the client was closed meanwhile (the cause is chained).
+            RehomError: raised by the POST itself (connection, timeout, HTTP
+                status).  A POST that timed out, or was cancelled or closed while
+                in flight, may or may not have landed.
+        """
+        if self._allow_writes is not True:
+            raise RehomWriteRefusedError("writes_disabled", "this client was created read-only")
+        async with self._write_lock:
+            self._batcher.flush_now()
+            state = self._state
+            if self._closed or not self._synced or state is None:
+                raise RehomNotReadyError("no complete sync yet, or the client is closed")
+            if not self.available:
+                raise RehomWriteRefusedError("unavailable", "the controller is not reachable")
+            plan = planner(state)
+            if self._confirmed(plan):
+                return False
+            # A POST already inside post_bulk_update when close() runs is stopped
+            # only by an owned transport's own closed check; otherwise it may land.
+            writer: WriteTransport = self._transport  # type: ignore[assignment]
+            await writer.post_bulk_update(plan.path, list(plan.records))
+            _LOGGER.debug("write sent: %s", plan.description)
+            await self._confirm_sent(plan)
+            self._batcher.flush_now()
+            return True
+
+    async def _confirm_sent(self, plan: WritePlan) -> None:
+        """Wait for a sent write to be reported, else take one snapshot to decide.
+
+        Every failure here is :class:`RehomWriteNotConfirmedError`: the POST was
+        already accepted, so the caller must not read it as "nothing happened".
+        """
+        try:
+            if await self._wait_confirmed(plan):
+                return
+            if self._closed:
+                raise RehomNotReadyError("the client was closed")
+            # No matching echo in time: one fresh snapshot decides.
+            await self._resync_within(_write_resync_limit(self._options))
+        except Exception as err:
+            raise RehomWriteNotConfirmedError(
+                f"{plan.description}: sent, but the confirmation failed ({type(err).__name__})"
+            ) from err
+        if not self._confirmed(plan):
+            raise RehomWriteNotConfirmedError(
+                f"{plan.description}: the controller did not report the new value"
+            )
+
+    async def _wait_confirmed(self, plan: WritePlan) -> bool:
+        """Poll the stores until ``plan`` is confirmed; ``False`` on timeout or close()."""
+        opts = self._options
+        deadline = self._clock.monotonic() + opts.write_confirm_timeout
+        while True:
+            if self._confirmed(plan):
+                return True
+            remaining = deadline - self._clock.monotonic()
+            if remaining <= 0 or self._closed:
+                return False
+            await self._clock.sleep(min(opts.write_poll_interval, remaining))
+
+    async def _resync_within(self, limit: float) -> None:
+        """:meth:`resync`, or :class:`RehomTimeoutError` after ``limit`` seconds (clock time).
+
+        The bound matters if the sync loop has stopped: a bare ``resync()`` would
+        then wait, holding the write lock, until :meth:`close`.
+        """
+        resync = asyncio.ensure_future(self.resync())
+        timer = asyncio.ensure_future(self._clock.sleep(limit))
+        try:
+            await asyncio.wait((resync, timer), return_when=asyncio.FIRST_COMPLETED)
+        finally:
+            timer.cancel()
+            finished = resync.done()
+            if not finished:
+                resync.cancel()
+        if not finished:
+            raise RehomTimeoutError(f"resync did not complete within {limit:g} s")
+        resync.result()
+
     def dump(self) -> dict[str, Any]:
         """JSON-ready copy of the stores (secrets redacted; personal data NOT masked).
 
@@ -1117,6 +1361,25 @@ class RehomClient:
 
 def _iso(value: datetime) -> str:
     return value.isoformat().replace("+00:00", "Z")
+
+
+def _same_device_time(stored: str | None, expected: str) -> bool:
+    """Two device-local override timestamps name the same instant (``" "`` or ``"T"``)."""
+    if stored == expected:
+        return True
+    parsed = parse_device_timestamp(stored)
+    return parsed is not None and parsed == parse_device_timestamp(expected)
+
+
+def _write_resync_limit(opts: ClientOptions) -> float:
+    """How long a write's confirming resync may take before it is given up.
+
+    The resync waits out ``min_resync_interval`` and possibly a sync already
+    running, then fetches a snapshot: ``/interface/`` plus three other GETs,
+    each paced by ``request_min_interval``.
+    """
+    fetch = opts.interface_timeout + 3 * opts.request_timeout + 4 * opts.request_min_interval
+    return opts.min_resync_interval + 2 * fetch
 
 
 def _settle(waiters: list[asyncio.Future[None]], err: BaseException | None) -> None:

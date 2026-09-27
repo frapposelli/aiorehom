@@ -108,5 +108,5 @@ async def test_interface_filters_still_work_and_allowlist_is_unchanged(
         await transport.get_interface(Stato="1", timeout=20)
     await transport.close()
     assert [t.total for t in _timeouts(mocked, "/api/interface/")] == [20.0]
-    non_get = [key for key in ALLOWLIST if key[0] != "GET"]
+    non_get = [key for key, rule in ALLOWLIST.items() if key[0] != "GET" and not rule.write]
     assert non_get == [("POST", "/api/get-token/")]

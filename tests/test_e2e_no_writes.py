@@ -1,8 +1,11 @@
 """Static no-writes guard over ``src/aiorehom``.
 
-Version 0.2 is the read path: the only non-GET is the existing login in ``transport.py``,
-``transport.py`` is the only HTTP call site, ``websocket.py`` the only WS call
-site, nothing ever sends a WS frame, and every timer goes through ``clock.py``.
+The non-GETs on the allowlist are the login and the two gated bulk writes
+(refused unless the transport was created with ``allow_writes=True``), and
+``.post_bulk_update(`` is called only from ``RehomClient._execute`` in
+``client.py``.  ``transport.py`` is the only HTTP call site, ``websocket.py``
+the only WS call site, nothing ever sends a WS frame, and every timer goes
+through ``clock.py``.
 """
 
 from __future__ import annotations
@@ -16,6 +19,8 @@ from aiorehom import transport
 
 SRC = Path(aiorehom.__file__).resolve().parent
 HTTP_WRITE_ATTRS = frozenset({"request", "post", "put", "patch", "delete"})
+#: The one place a bulk write may be sent from: (module, enclosing function).
+BULK_WRITE_CALLER = ("client.py", "_execute")
 WS_SEND_ATTRS = frozenset(
     {"send_str", "send_json", "send_bytes", "send_json_bytes", "send_frame", "ping", "pong"}
 )
@@ -50,6 +55,23 @@ def calls(tree: ast.Module, *, methods_only: bool = False) -> Iterator[tuple[str
                 yield func.attr, node.lineno
             elif isinstance(func, ast.Name) and not methods_only:
                 yield func.id, node.lineno
+
+
+def attribute_uses(tree: ast.Module, attr: str) -> Iterator[tuple[str, bool, int]]:
+    """Every ``x.<attr>`` reference: (innermost enclosing function, is it called, line)."""
+
+    def visit(node: ast.AST, scope: str, called: set[int]) -> Iterator[tuple[str, bool, int]]:
+        for child in ast.iter_child_nodes(node):
+            if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                yield from visit(child, child.name, called)
+                continue
+            if isinstance(child, ast.Call) and isinstance(child.func, ast.Attribute):
+                called.add(id(child.func))
+            if isinstance(child, ast.Attribute) and child.attr == attr:
+                yield scope, id(child) in called, child.lineno
+            yield from visit(child, scope, called)
+
+    yield from visit(tree, "<module>", set())
 
 
 def dotted(node: ast.expr) -> str | None:
@@ -91,6 +113,22 @@ def test_http_writes_only_in_transport() -> None:
     assert offenders == []
 
 
+def test_bulk_writes_only_from_client_execute() -> None:
+    uses = [
+        (rel, scope, called, line)
+        for rel, tree in modules()
+        for scope, called, line in attribute_uses(tree, "post_bulk_update")
+    ]
+    offenders = [
+        f"{rel}:{line} {scope}: .post_bulk_update{'(' if called else ''}"
+        for rel, scope, called, line in uses
+        if (rel, scope) != BULK_WRITE_CALLER or not called
+    ]
+    assert offenders == []
+    # the guard itself sees the real call site
+    assert [(rel, scope) for rel, scope, _called, _line in uses] == [BULK_WRITE_CALLER]
+
+
 def test_ws_connect_and_sessions_only_in_their_modules() -> None:
     offenders: list[str] = []
     for rel, tree in modules():
@@ -112,9 +150,16 @@ def test_nothing_ever_sends_a_ws_frame() -> None:
     assert offenders == []
 
 
-def test_allowlist_has_exactly_one_non_get() -> None:
-    non_get = [key for key in transport.ALLOWLIST if key[0] != "GET"]
-    assert non_get == [("POST", "/api/get-token/")]
+def test_allowlist_non_get_is_login_plus_two_gated_writes() -> None:
+    non_get = {key: rule for key, rule in transport.ALLOWLIST.items() if key[0] != "GET"}
+    assert set(non_get) == {
+        ("POST", "/api/get-token/"),
+        ("POST", "/api/interface/bulk_update/"),
+        ("POST", "/api/overrides/bulk_update/"),
+    }
+    assert not non_get[("POST", "/api/get-token/")].write
+    assert non_get[("POST", "/api/interface/bulk_update/")].write
+    assert non_get[("POST", "/api/overrides/bulk_update/")].write
 
 
 def test_system_clock_only_in_allowed_modules() -> None:
@@ -144,3 +189,15 @@ def test_guard_detects_offences() -> None:
         "asyncio.sleep",
         "from time import monotonic",
     }
+    writes = ast.parse(
+        "async def _execute(t):\n    await t.post_bulk_update('p', [])\n"
+        "async def other(t):\n    send = t.post_bulk_update\n"
+        "    async def inner():\n        await t.post_bulk_update('p', [])\n"
+        "t.post_bulk_update('p', [])\n"
+    )
+    assert sorted(attribute_uses(writes, "post_bulk_update")) == [
+        ("<module>", True, 7),
+        ("_execute", True, 2),
+        ("inner", True, 6),
+        ("other", False, 4),
+    ]

@@ -453,7 +453,7 @@ class Vmc:
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class Actuator:
-    """One present actuator (``ATTUATORE`` unit); raw values only in 0.2.
+    """One present actuator (``ATTUATORE`` unit); raw values only (for now).
 
     Attributes:
         id: the 3-digit unit id.
@@ -472,7 +472,7 @@ class Actuator:
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class Fancoil:
-    """One present fancoil (``AT9091`` unit); presence only in 0.2.
+    """One present fancoil (``AT9091`` unit); presence only (for now).
 
     Attributes:
         id: the 3-digit unit id.

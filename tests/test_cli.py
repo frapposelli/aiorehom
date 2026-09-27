@@ -416,6 +416,7 @@ def test_no_raw_request_command() -> None:
         "watch",
         "latency",
         "inventory",
+        "write-test",
         "diff",
         "redact-har",
         "sanitize-fixtures",
